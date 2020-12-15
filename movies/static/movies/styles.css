@@ -1,0 +1,397 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.blue {
+    color: #0056b3;
+}
+
+/* Navbar */
+.paths {
+    margin-right: 3%;
+}
+
+.equal-icon {
+    background-color: #ebdf41;
+    color: #0056b3;
+    font-size: 190%;
+    margin-left: 79%;
+    border: 1px solid #0056b3;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    position: absolute;
+} 
+
+.toggled {
+    display: none;
+}
+
+.toggle-items {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    grid-gap: 25%;
+    padding: 3%;
+    padding-bottom: 6%;
+    background-color: #3b72ac; 
+}
+
+.white {
+    color: white;
+}
+
+.navbar {
+    padding-right: 0px;
+}
+
+nav {
+    background-color: #ebdf41;
+    height: 15vh;
+}
+
+.navbar-brand {
+    font-size: 160%;
+    font-family: 'Bangers', cursive;
+}
+
+.icon-nav {
+    margin-right: 4%;
+}
+
+/* Footer */
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* text-align: center; */
+    justify-items: center;
+    align-items: center;
+    background-color: #ebdf41;
+    /* position: fixed; */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.flaticon {
+    width: 80%;
+    color: #0056b3;
+    margin-top: 3%;
+}
+
+.tmdb {
+    width: 50%;
+    height: 40%;
+}
+
+/* Sign in */
+.signin-form {
+    margin-top: 5%;
+}
+
+/* index-page */
+.signed-as {
+    text-align: center;
+    color: #00b377;
+}
+
+.search-input {
+    width: 50%;
+    margin-top: 2%;
+}
+
+.title-index {
+    text-align: center;
+    color: #0056b3;
+    margin-top: 3%;
+}
+
+.input-index {
+    border-color: #0056b3;
+}
+
+.btn-outline-secondary {
+    background-color: #0056b3;
+    color: white;
+}
+
+.movies-index {
+    margin: 3%;
+}
+
+.card:hover {
+    transform: scale(1.07);
+    transition: 2s;
+}
+
+.card-body {
+    background-color: #0056b3;
+    color: white;
+
+}
+
+.card-title {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 80%;
+    flex-wrap: nowrap;
+}
+
+.no-img {
+    margin: 5%;
+    margin-bottom: 15%;
+    margin-top: 15%;
+    width: 80%;
+    height: 80%;
+}
+
+/* movie details page */
+.title-icon {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    justify-items: center;
+    align-items: center;
+}
+
+.card-img-top {
+    text-align: center;
+    font-size: 150%;
+    text-decoration: underline;
+}
+
+.movie-title {
+    color: #0056b3;
+    margin-left: 20%;
+    font-size: 2rem;
+}
+
+.list-blank:hover, .list-green:hover {
+    cursor: pointer;
+}
+
+.watch {
+    font-size: 1.3rem;
+    color: #0056b3;
+    margin-bottom: 2%;
+}
+
+.trailer-container {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.media-movie {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: #0056b3;
+    color: white;
+    padding: 8%;
+}
+
+.media-body {
+    margin-left: 3%;
+}
+
+.bold {
+    font-weight: bolder;
+    font-size: 120%;
+}
+
+.poster-movie-details {
+    width: 30%;
+    height: 30%;
+}
+
+/* Mylist page */
+.title-mylist {
+    margin-top: 4%;
+    margin-bottom: 1%;
+}
+
+.social-icons {
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.twitter-icon {
+    margin-right: 2%;
+}
+
+.facebook-icon {
+    margin-left: 2%;
+}
+
+.media-mylist {
+    margin-top: 5%;
+    margin-left: 15%;
+    width: 70%;
+    background-color: #638db9;
+    color: white;
+    padding: 3%;
+    border-radius: 10px;
+    position: relative;
+}
+
+.icons-box {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 30%;
+}
+
+.star-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 3%;
+}
+
+.eye-end {
+    justify-self: end;
+}
+
+.end {
+    justify-self: end;
+}
+
+.mylist-hover:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+    transition: 1s;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px){
+    /* Navbar */
+    .nav {
+        display: none;
+    }
+
+    .equal-icon {
+        display: block;
+    }
+
+    /* Index */
+    .search-input {
+        width: 90%;
+    }
+
+    .movies-index {
+        margin-left: 15%;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    /* Movie page */
+    .trailer-container {
+        padding-right: 2%;
+        padding-left: 2%;
+        margin-top: 5%;
+        margin-bottom: 10%;
+    }
+
+    .watch {
+        margin-bottom: 2%;
+    }
+
+    .media-movie {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .poster-movie-details {
+        width: 70%;
+        height: 70%;
+        margin-left: 15%;
+    }
+
+    .media-body {
+        margin-top: -10%;
+    }
+
+    .no-trailer {
+        text-align: center;
+        color: rgb(192, 67, 67);
+    }
+
+    /* mylist */
+    .title-mylist {
+        margin-top: 9%;
+        margin-bottom: 3%;
+    }
+
+    .media-mylist {
+        width: 90%;
+        margin: 5%;
+        display: grid;
+        grid-template-rows: auto auto auto;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .poster-mylist {
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .media-body {
+        margin-top: 10%;
+        margin-bottom: 5%;
+        padding-bottom: 5%;
+    }
+
+    .released-mylist {
+        margin-top: -5%;
+    }
+
+    .watch-trailer{
+        margin-top: -50%;
+    }
+
+    .icons-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0;
+        margin-top: 6%;
+        justify-content: center;
+    }
+
+    .star-box {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-left: 15%;
+        width: 70%;
+        margin-top: 8%;
+    }
+
+    .eye-end {
+        justify-self: center;
+        margin-top: 9%;
+        margin-bottom: -20%;
+    }
+    .end {
+        justify-self: center;
+        margin-top: 9%;
+    }
+
+    /* footer sigin */
+    .footer {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        text-align: center;
+    }
+    .flaticon {
+        font-size: 60%;
+        width: 90%;
+    }
+
+}

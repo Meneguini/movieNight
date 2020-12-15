@@ -1,0 +1,4 @@
+.env
+README.md
+movies/migrations
+db.sqlite3

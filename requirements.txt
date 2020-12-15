@@ -1,0 +1,15 @@
+asgiref==3.2.10
+certifi==2020.6.20
+chardet==3.0.4
+Django==3.1
+idna==2.10
+MarkupSafe==1.1.1
+packaging==20.4
+pytz==2020.1
+requests==2.24.0
+six==1.15.0
+sqlparse==0.3.1
+urllib3==1.25.10
+webencodings==0.5.1
+Werkzeug==1.0.1
+django-environ==0.4.5

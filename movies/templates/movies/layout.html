@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="{% static 'movies/styles.css' %}" rel="stylesheet">
+    <title>{% block title %}Movie Night{% endblock %}</title>
+    <link rel="icon" href="/static/movies/icons/popcorn.png" type="image/x-icon">
+    
+    <script src="{% static 'movies/js/nav.js' %}"></script>
+
+    {% block script %}
+    {% endblock %}
+</head>
+<body>
+  <!-- Using this script tag to avoid FOUC on Firefox-->
+    <script hidden>0</script>
+    <nav class="navbar">
+
+        <!-- Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+
+        <a class="navbar-brand" href="{% url 'index' %}"><img class="icon-nav" src="{% static 'movies/icons/popcorn.png' %}" alt="popcorn" width="50" height="50"></img>Movie Night</a>
+      
+        <button class="equal-icon"><span>=</span></button>
+
+        <div class="paths">
+          <ul class="nav justify-content-end">
+            {% if user.is_authenticated %}
+              <!-- <li>
+                <p class="signed-as">Signed as {{ request.user.username.capitalize }}</p>
+              </li> -->
+              <li class="nav-item active">
+                  <a class="nav-link" href="/my_list/{{ request.user.username }}">My List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'sign_out' %}">Sign Out</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'sign_in' %}">Sign In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+              </li>
+            {% endif %}
+          </ul>
+
+        </div>
+      </nav>
+      <ul class="navbar-nav mr-auto toggled">    
+        <li class="toggle-items">
+          {% if user.is_authenticated %}
+            <div>
+              <a class="white" href="/my_list/{{ request.user.username }}">My List</a>
+            </div>
+            <div>
+              <a class="white" href="{% url 'sign_out' %}">Sign Out</a>
+            </div>
+          {% else %}
+            <div>
+              <a class="white" href="{% url 'sign_in' %}">Sign In</a>
+            </div>
+            <div>
+              <a class="white" href="{% url 'register' %}">Register</a>
+            </div>
+          {% endif %}
+        </li> 
+      </ul >
+      <div class="body">
+          {% block body %}
+          {% endblock %}
+      </div>
+
+</body>
+</html>

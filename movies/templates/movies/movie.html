@@ -1,0 +1,67 @@
+{% extends "movies/layout.html" %}
+{% load static %}
+
+
+{% block body %}
+    <div class="movie-detail-page">
+
+        <div class="alert alert-success" role="alert" style="display: none;"></div>
+
+        <div class="title-icon">
+            <h3 class="movie-title p-4"> {{ details.title }} </h3>
+            <p class="movie-details-id" hidden>{{ details.id }}</p>
+            
+            {% if user.is_authenticated %}
+                {% if list_movie %}
+                    <img class="list-green" src="{% static 'movies/icons/checklist.png' %}" alt="Green checklist" width="40" height="40">
+                    <img class="list-blank" src="{% static 'movies/icons/checklist(1).png' %}" alt="Green checklist" width="40" height="40" style="display: none;">
+                {% else %}
+                    <img class="list-blank" src="{% static 'movies/icons/checklist(1).png' %}" alt="Green checklist" width="40" height="40">
+                    <img class="list-green" src="{% static 'movies/icons/checklist.png' %}" alt="Green checklist" width="40" height="40" style="display: none;">
+                {% endif %}
+                <!-- Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+            {% endif %}
+        </div>
+        {% if trailer_site %}
+            <div class="trailer-container">
+                <h6 class="watch">Watch trailer:</h6>
+                <div class="embed-responsive embed-responsive-21by9">
+                    <iframe class="embed-responsive-item iframe" src="https://www.youtube-nocookie.com/embed/{{ trailer_id }}" allowfullscreen></iframe>
+                </div>
+            </div>
+        {% else %}
+            <div class="trailer-container">
+                <h6 class="watch no-trailer">Sorry there is no trailer available for this title!</h6>
+            </div>
+        {% endif %}
+        <div class="media media-movie">
+            {% if details.poster_path == None %}
+              <img src='/static/movies/icons/file(1).png' class="align-self-start mr-3 poster-movie-details" alt="No Poster">
+            {% else %}
+              <img src='http://image.tmdb.org/t/p/w500//{{ details.poster_path }}' class="align-self-start mr-3 poster-movie-details" alt="No Poster">
+            {% endif %}
+            
+            <div class="media-body">
+                <p class="mt-0"><span class="bold">Overview:  </span> {{ details.overview }}</p>
+                <p><span class="bold">Duration:  </span> {{ details.runtime }}min</p>
+                <p><span class="bold">Released:  </span> {{ details.release_date }}</p>
+                <p>
+                    <span class="bold">Genres:  </span>
+                    {% for name in details.genres %}
+                        <span>{{ name.name }} |</span>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+
+    </div>
+    
+    <footer class="footer fixed">
+        <p class="flaticon">All icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+        <img class="tmdb" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" alt="themoviedb">
+    </footer>
+{% endblock %}
+
+{% block script %}
+  <script src="{% static 'movies/js/movie.js' %}"></script>
+{% endblock %}

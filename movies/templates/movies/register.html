@@ -1,0 +1,31 @@
+{% extends "movies/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    {% if msg %}
+        <div class="alert alert-danger" role="alert">
+            {{ msg }}
+        </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'register' %}" class="p-5 signin-form">
+        {% csrf_token %}
+        <div class="form-group mx-auto w-75">
+            <label class="blue">Name:</label>
+            <input type="text" class="form-control" name="username" required>
+        </div>
+        <div class="form-group mx-auto w-75">
+            <label class="blue">Password:</label>
+            <input type="password" class="form-control" name="password" required>
+            <small class="form-text text-muted">Password must have 6 characters.</small>
+        </div>
+        <div class="form-group mx-auto w-75">
+            <label class="blue">Confirm Password:</label>
+            <input type="password" class="form-control" name="confirmation" required>
+        </div>
+        <div class="form-group mx-auto w-75">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+{% endblock %}

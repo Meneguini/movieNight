@@ -1,0 +1,53 @@
+{% extends "movies/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+  {% if msg %}
+    <div class="alert alert-success" role="alert">
+        {{ msg }}
+    </div>
+  {% endif %}
+  {% if request.user.username %}
+    <p class="signed-as">Signed as {{ request.user.username.capitalize }}</p>
+  {% endif %}
+  <div class="index-page">
+
+    <div>
+      <h3 class="title-index">Latest Movies</h3>
+    </div>
+
+    <div class="input-group p-4 mx-auto mb-2 search-input">
+      <input type="text" class="form-control input-index" placeholder="Movie Title" >
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary index-btn" type="button">Search</button>
+      </div>
+    </div>
+    
+    <div class="row row-cols-1 row-cols-md-5 movies-index">
+     
+      {% for movie in movies %}
+        <div class="col mb-4">
+          <a href="movie/{{ movie.id }}" class="card">
+            {% if movie.poster_path == None %}
+              <img src='/static/movies/icons/file(1).png' class="no-img" alt="No Poster">
+            {% else %}
+              <img src='http://image.tmdb.org/t/p/w500//{{ movie.poster_path }}' class="card-img-top" alt="No Poster">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ movie.title }}</h5>
+              <p class="card-text">Released: {{ movie.release_date }}</p>
+              <p class="id" hidden>{{ movie.id }}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+      
+    </div>
+    
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script src="{% static 'movies/js/index.js' %}"></script>
+{% endblock %}
