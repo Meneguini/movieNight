@@ -30,9 +30,9 @@
         <div class="paths">
           <ul class="nav justify-content-end">
             {% if user.is_authenticated %}
-              <!-- <li>
-                <p class="signed-as">Signed as {{ request.user.username.capitalize }}</p>
-              </li> -->
+              <li class="">
+                <p class="nav-link">Welcome {{ request.user.username.capitalize }}!</p>
+              </li>
               <li class="nav-item active">
                   <a class="nav-link" href="/my_list/{{ request.user.username }}">My List</a>
               </li>
