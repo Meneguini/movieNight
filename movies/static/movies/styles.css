@@ -111,13 +111,34 @@ body {
 }
 
 /* index-page */
-.signed-as {
+
+.search-img-container {
+    margin-top: 2%;
+    position: relative;
     text-align: center;
-    color: #00b377;
+}
+
+.pop-img {
+    width: 100vh;
+    height: 35vh;
+    border-radius: 7px;
+}
+
+.search-title {
+    position: absolute;
+    font-weight: bolder;
+    font-size: 2.5rem;
+    top: 25%;
+    left: 30%;
+    width: 40%;
+    color: white;
 }
 
 .search-input {
-    width: 50%;
+    position: absolute;
+    top: 55%;
+    left: 30%;
+    width: 40%;
     margin-top: 2%;
 }
 

@@ -19,7 +19,6 @@ function loadMore() {
         }
         fetchNext();
     }
-
 }
 
 // Fetch the movies to add in the html 
