@@ -22,19 +22,18 @@
     <nav class="navbar">
 
         <!-- Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
-
-        <a class="navbar-brand" href="{% url 'index' %}"><img class="icon-nav" src="{% static 'movies/icons/popcorn.png' %}" alt="popcorn" width="50" height="50"></img>Movie Night</a>
-      
-        <button class="equal-icon"><span>=</span></button>
-
+        
+        <a class="navbar-brand" href="{% url 'index' %}"><img class="icon-nav" src="{% static 'movies/icons/popcorn.png' %}" alt="popcorn" width="30" height="30"></img>Movie Night</a>
+        
         <div class="paths">
-          <ul class="nav justify-content-end">
+          <button class="equal-icon"><img src="{% static 'movies/icons/menu.png' %}" alt="menu" width="20" height="20"></button>
+          <ul class="nav">
             {% if user.is_authenticated %}
-              <li class="">
-                <p class="nav-link">Welcome {{ request.user.username.capitalize }}!</p>
+              <li class="nav-item">
+                <span class="nav-link welcome">Welcome {{ request.user.username.capitalize }}!</span>
               </li>
               <li class="nav-item active">
-                  <a class="nav-link" href="/my_list/{{ request.user.username }}">My List</a>
+                <a class="nav-link" href="/my_list/{{ request.user.username }}">My List</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'sign_out' %}">Sign Out</a>
@@ -48,7 +47,6 @@
               </li>
             {% endif %}
           </ul>
-
         </div>
       </nav>
       <ul class="navbar-nav mr-auto toggled">    
