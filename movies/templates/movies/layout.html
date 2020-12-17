@@ -49,12 +49,18 @@
           </ul>
         </div>
       </nav>
-      <ul class="navbar-nav mr-auto toggled">    
+      {% if user.is_authenticated %}
+      <div class="welcome-responsive">
+        <span class="white">Welcome {{ request.user.username.capitalize }}!</span>
+      </div>
+      {% endif %}
+      <ul class="navbar-nav mr-auto toggled">   
         <li class="toggle-items">
           {% if user.is_authenticated %}
             <div>
               <a class="white" href="/my_list/{{ request.user.username }}">My List</a>
             </div>
+
             <div>
               <a class="white" href="{% url 'sign_out' %}">Sign Out</a>
             </div>

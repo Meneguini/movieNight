@@ -9,7 +9,6 @@ body {
 /* Navbar */
 .navbar {
     width: 100%;
-    /* height: 1%; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -27,24 +26,6 @@ body {
     display: none;
 } 
 
-.toggled {
-    display: none;
-}
-
-.toggle-items {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    justify-content: center;
-    grid-gap: 25%;
-    padding: 3%;
-    padding-bottom: 6%;
-    background-color: #3b72ac; 
-}
-
-.white {
-    color: white;
-}
-
 .navbar-brand {
     margin-right: 0px;
     font-size: 150%;
@@ -55,13 +36,42 @@ body {
     margin-right: 4%;
 }
 
-.welcome {
-    color: #0056b3;
-}
-
 .paths {
     margin-right: 3%;
     justify-self: end;
+}
+
+.toggled {
+    display: none;
+    background-color: #1e3c5c; 
+    height: 13vh;
+    text-align: center;
+
+}
+
+.toggle-items {
+    text-align: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    grid-gap: 30%;
+}
+
+.white {
+    color: white;
+}
+
+.welcome {
+    color: #1e3c5c;
+}
+
+.welcome-responsive {
+    display: none;
+    width: 100%;
+    text-align: center;
+    background-color: #1e3c5c; 
+    border-bottom: 1px solid white;
 }
 
 /* Footer */
@@ -274,6 +284,8 @@ body {
     transition: 1s;
 }
 
+/* Responsive */
+
 @media screen and (max-width: 1680px) {
 
 }
@@ -287,11 +299,6 @@ body {
 }
 
 @media screen and (max-width: 736px) {
-
-}
-
-/* Responsive */
-@media screen and (max-width: 600px){
     /* Navbar */
     .nav {
         display: none;
@@ -299,6 +306,14 @@ body {
 
     .equal-icon {
         display: block;
+    }
+
+    .welcome-responsive {
+        display: block;
+    }
+
+    .toggle-items {
+        padding-top: 3%;
     }
 
     /* Index */
@@ -415,6 +430,31 @@ body {
     .flaticon {
         font-size: 60%;
         width: 90%;
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 600px){
+    /* Nav */
+    .nav {
+        display: none;
+    }
+
+    .equal-icon {
+        display: block;
+    }
+
+    .toggle-items {
+        padding-top: 4%;
+    }
+
+
+}
+
+@media screen and (max-width: 430px){
+    /* Nav */
+    .toggle-items {
+        padding-top: 5%;
     }
 
 }
