@@ -160,6 +160,12 @@ body {
     margin: 2%;
     margin-left: 15%;
     margin-right: 15%;
+    position: relative;
+}
+
+.card {
+    border: none;
+    box-shadow: 2px 2px 2px 0px rgba(65, 65, 65, 0.3);
 }
 
 .card:hover {
@@ -168,18 +174,21 @@ body {
 }
 
 .card-body {
-    background-color: #0056b3;
+    padding: 0.7rem;
+    padding-bottom: 0.3rem;
+    background-color: #0f3966;
     color: white;
-
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .card-title {
-    font-size: 120%;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
 .card-text {
-    font-size: 80%;
+    font-size: 70%;
     flex-wrap: nowrap;
 }
 

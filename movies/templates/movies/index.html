@@ -16,7 +16,6 @@
         <div class="input-group-append">
           <button class="btn btn-outline-secondary index-btn" type="button">Search</button>
         </div>
-        
       </div>
       <small class="form-comment">Any movie that has the word as the title or part of the title will appears as result.</small>
     </div>
@@ -36,8 +35,8 @@
             {% endif %}
             <div class="card-body">
               <h5 class="card-title">{{ movie.title }}</h5>
-              <p class="card-text">Released: {{ movie.release_date }}</p>
-              <p class="id" hidden>{{ movie.id }}</p>
+              <p class="card-text">{{ movie.release_date }}</p>
+              <!-- <p class="id" hidden>{{ movie.id }}</p> -->
             </div>
           </a>
         </div>
