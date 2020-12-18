@@ -9,15 +9,16 @@
     </div>
   {% endif %}
   <div class="index-page">
-    <div class="search-img-container">
-      <img  class="pop-img" src="{% static 'movies/img/cinema.jpg' %}" alt="popcorn">
+    <div class="search-container">
       <p class="search-title">Search for your favorite movies!</p>
-      <div class="input-group p-4 mx-auto mb-2 search-input">
+      <div class="input-group mx-auto mb-2 search-input">
         <input type="text" class="form-control input-index" placeholder="Search for a title" >
         <div class="input-group-append">
           <button class="btn btn-outline-secondary index-btn" type="button">Search</button>
         </div>
+        
       </div>
+      <small class="form-comment">Any movie that has the word as the title or part of the title will appears as result.</small>
     </div>
     <div>
       <h3 class="title-index">Latest Movies</h3>

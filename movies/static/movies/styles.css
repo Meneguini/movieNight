@@ -14,7 +14,7 @@ body {
     align-items: center;
     background-color: #ebdf41;
     padding-right: 16px;
-    box-shadow: 0 1px 1px -1px rgba(0,0,0,.2);
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
 .equal-icon {
@@ -46,7 +46,9 @@ body {
     background-color: #1e3c5c; 
     height: 13vh;
     text-align: center;
-
+    margin-bottom: 7%;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
 .toggle-items {
@@ -112,34 +114,31 @@ body {
 
 /* index-page */
 
-.search-img-container {
-    margin-top: 2%;
-    position: relative;
+.search-container {
+    width: 100%;
+    height: 25vh;
+    padding-top: 2%;
     text-align: center;
-}
-
-.pop-img {
-    width: 100vh;
-    height: 35vh;
-    border-radius: 7px;
+    background-color: #f1edb5;
+    background: radial-gradient(circle, rgba(241,237,181,1) 0%, rgba(235,223,65,1) 100%);
 }
 
 .search-title {
-    position: absolute;
     font-weight: bolder;
-    font-size: 2.5rem;
-    top: 25%;
-    left: 30%;
+    font-size: 2rem;
+    margin-left: auto!important;
+    margin-right: auto!important;
     width: 40%;
-    color: white;
+    color: #0056b3;
 }
 
 .search-input {
-    position: absolute;
-    top: 55%;
-    left: 30%;
     width: 40%;
     margin-top: 2%;
+}
+
+.form-comment {
+    color:  #0056b3;
 }
 
 .title-index {
@@ -308,15 +307,56 @@ body {
 /* Responsive */
 
 @media screen and (max-width: 1680px) {
-
+    /* .search-container {
+        padding-top: 1%;
+    } */
+    
+    /* .search-title {
+        font-size: 1.3rem;
+        width: 60%;
+    } */
+    
+    /* .search-input {
+        width: 80%;
+        margin-top: 2%;
+    } */
+    
+    /* .form-comment {
+        color:  red;
+    } */
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1280px) {    
+    /* Index */
+    .search-container {
+        height: 30vh;
+        padding-top: 2%;
+    }
+    
+    .search-title {
+        font-size: 1.5rem;
+        width: 60%;
+    }
 
+    .search-input {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 980px) {
+    /* Index */
+    .search-container {
+        height: 25vh;
+    }
+    
+    .search-title {
+        font-size: 1.3rem;
+        width: 60%;
+    }
 
+    .search-input {
+        width: 60%;
+    }
 }
 
 @media screen and (max-width: 736px) {
@@ -338,8 +378,17 @@ body {
     }
 
     /* Index */
+    .search-container {
+        padding-top: 4%;
+    }
+    
+    .search-title {
+        font-size: 1.3rem;
+    }
+    
     .search-input {
-        width: 90%;
+        width: 80%;
+        margin-top: 2%;
     }
 
     .movies-index {
@@ -469,13 +518,50 @@ body {
         padding-top: 4%;
     }
 
-
+    /* Index */
+    .search-container {
+        padding-top: 5%;
+        height: 26vh;
+    }
+    
+    .search-title {
+        font-size: 1.3rem;
+        width: 60%;
+    }
+    
+    .form-comment { 
+        font-size: 0.8rem;
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 430px){
     /* Nav */
     .toggle-items {
         padding-top: 5%;
+    }
+
+    /* Index */
+    .search-container {
+        height: 26vh;
+        padding-top: 5%;
+    }
+    
+    .search-title {
+        font-size: 1rem;
+        width: 80%;
+    }
+    
+    .search-input {
+        width: 85%;
+        margin-top: 2%;
+    }
+    
+    .form-comment { 
+        font-size: 0.8rem;
+        width: 80%;
+        margin-right: 4%;
+        margin-left: 4%;
     }
 
 }
