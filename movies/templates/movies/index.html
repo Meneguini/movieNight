@@ -19,29 +19,35 @@
       </div>
       <small class="form-comment">Any movie that has the word as the title or part of the title will appears as result.</small>
     </div>
+
     <div>
       <h3 class="title-index">Latest Movies</h3>
     </div>
-    
-    <div class="row row-cols-1 row-cols-md-5 movies-index">
-     
-      {% for movie in movies %}
-        <div class="col mb-4">
-          <a href="movie/{{ movie.id }}" class="card">
-            {% if movie.poster_path == None %}
-              <img src='/static/movies/icons/file(1).png' class="no-img" alt="No Poster">
-            {% else %}
-              <img src='http://image.tmdb.org/t/p/w500//{{ movie.poster_path }}' class="card-img-top" alt="No Poster">
-            {% endif %}
-            <div class="card-body">
-              <h5 class="card-title">{{ movie.title }}</h5>
-              <p class="card-text">{{ movie.release_date }}</p>
-              <!-- <p class="id" hidden>{{ movie.id }}</p> -->
-            </div>
-          </a>
-        </div>
-      {% endfor %}
+
+    <div class="index-main">
+      <div>
+        <img class="btn-top" src="{% static 'movies/icons/right.png' %}" alt="Back-to-top" width="40" height="40">
+      </div>
       
+      <div class="row row-cols-1 row-cols-md-5 movies-index">
+      
+        {% for movie in movies %}
+          <div class="col mb-4">
+            <a href="movie/{{ movie.id }}" class="card">
+              {% if movie.poster_path == None %}
+                <img src='/static/movies/icons/file(1).png' class="no-img" alt="No Poster">
+              {% else %}
+                <img src='http://image.tmdb.org/t/p/w500//{{ movie.poster_path }}' class="card-img-top" alt="No Poster">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="card-text">{{ movie.release_date }}</p>
+                <!-- <p class="id" hidden>{{ movie.id }}</p> -->
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
     </div>
     
   </div>

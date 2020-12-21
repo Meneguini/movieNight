@@ -156,16 +156,27 @@ body {
     color: white;
 }
 
+.index-main {
+    position: relative;
+}
+
+.btn-top {
+    cursor: pointer;
+    position: fixed;
+    display: none;
+    bottom: 5%;
+    right: 5%;
+}
+
 .movies-index {
     margin: 2%;
     margin-left: 15%;
     margin-right: 15%;
-    position: relative;
 }
 
 .card {
     border: none;
-    box-shadow: 2px 2px 2px 0px rgba(65, 65, 65, 0.3);
+    box-shadow: 3px 3px 3px 0px rgba(65, 65, 65, 0.3);
 }
 
 .card:hover {
@@ -174,21 +185,21 @@ body {
 }
 
 .card-body {
-    padding: 0.7rem;
-    padding-bottom: 0.3rem;
+    padding: 0.8rem;
+    padding-bottom: 0.4rem;
     background-color: #0f3966;
     color: white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .card-title {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
 .card-text {
-    font-size: 70%;
+    font-size: 85%;
     flex-wrap: nowrap;
 }
 

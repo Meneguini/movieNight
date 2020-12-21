@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("loaded");
     // When document is loaded add scroll listener and call loadMore
-    window.addEventListener("scroll", loadMore);
+    window.addEventListener("scroll", () => {
+        loadMore();
+        // check sytle display of back to top button
+        scrollTop();
+    });
+
+    document.querySelector('.btn-top').addEventListener('click', backToTop);
     // add event listener to search btn 
     document.querySelector('.index-btn').addEventListener('click', fetchSearch);
 });
@@ -19,6 +25,22 @@ function loadMore() {
         }
         fetchNext();
     }
+}
+
+// Show/hide scroll to top btn
+function scrollTop() {
+    btnTop = document.querySelector('.btn-top');
+    // Adding event listener
+    if (document.documentElement.scrollTop > 500) {
+        btnTop.style.display = "block";
+    } else {
+        btnTop.style.display = "none";
+    }
+}
+
+// After click back to function
+function backToTop() {
+    document.documentElement.scrollTop = 0;
 }
 
 // Fetch the movies to add in the html 
