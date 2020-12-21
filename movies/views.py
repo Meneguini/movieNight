@@ -11,6 +11,7 @@ from . import utils
 from .models import User, Movie
 
 
+
 @login_required
 def update_star(request):
     if request.method != 'PUT':
@@ -171,6 +172,9 @@ def search_title(request, title):
 
 def register(request):
 
+    if request.user:
+        return HttpResponseRedirect(reverse("index"))
+
     if request.method != "POST":
             return render(request, 'movies/register.html', status=405)
 
@@ -197,9 +201,12 @@ def register(request):
 
 
 def sign_in(request):
+    if request.user:
+        return HttpResponseRedirect(reverse("index"))
+
     if request.method != "POST":
         return render(request, "movies/login.html")
-
+    
     username = request.POST["username"]
     password = request.POST["password"]
 

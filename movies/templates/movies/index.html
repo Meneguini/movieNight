@@ -32,8 +32,8 @@
       <div class="row row-cols-1 row-cols-md-5 movies-index">
       
         {% for movie in movies %}
-          <div class="col mb-4">
-            <a href="movie/{{ movie.id }}" class="card">
+          <div class="col mb-4 h-100">
+            <a href="movie/{{ movie.id }}" class="card h-100">
               {% if movie.poster_path == None %}
                 <img src='/static/movies/icons/file(1).png' class="no-img" alt="No Poster">
               {% else %}

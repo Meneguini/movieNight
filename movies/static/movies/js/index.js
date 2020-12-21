@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("loaded");
     // When document is loaded add scroll listener and call loadMore
-    window.addEventListener("scroll", () => {
-        loadMore();
-        // check sytle display of back to top button
-        scrollTop();
-    });
+    // window.addEventListener('scroll', () => {
+    //     loadMore();
+    //     // check sytle display of back to top button
+    //     scrollTop();
+    // }, false);
+    window.addEventListener('scroll', loadMore);
+    window.addEventListener('scroll', scrollTop);
 
     document.querySelector('.btn-top').addEventListener('click', backToTop);
     // add event listener to search btn 
@@ -18,12 +20,13 @@ let page = 0
 
 // Load more set at what point you will call the function with the fetch and turn off the scroll listener 
 function loadMore() {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 700) {
         
         if(page<=pageCounter){
-            window.removeEventListener('scroll', loadMore);
+           window.removeEventListener('scroll', loadMore);
         }
         fetchNext();
+        
     }
 }
 
@@ -47,11 +50,13 @@ function backToTop() {
 function fetchNext() {
     
     page = pageCounter + 1
+    // window.removeEventListener('scroll', loadMore);
         
     fetch(`/latest/${page}`)
     .then(response => response.json())
     .then(data => {
-        // Parse the answer
+        // Update the counters and Parse the answer
+        pageCounter = page;
         data = JSON.parse(data)
         // Calling loadMovies and passing data(with movies)
         loadMovies(data);
@@ -105,8 +110,7 @@ function loadMovies(data) {
         div.append(divCard);
         document.querySelector('.movies-index').append(div);
     });
-    // update pageCounter and add listener for scroll again
-    pageCounter = page;
+    // Add listener again
     window.addEventListener('scroll', loadMore);
 }
 

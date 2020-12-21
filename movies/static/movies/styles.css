@@ -180,13 +180,13 @@ body {
 }
 
 .card:hover {
-    transform: scale(1.07);
+    transform: scale(1.05);
     transition: 2s;
 }
 
 .card-body {
-    padding: 0.8rem;
-    padding-bottom: 0.4rem;
+    padding: 0.7rem;
+    padding-bottom: 0.5rem;
     background-color: #0f3966;
     color: white;
     border-bottom-left-radius: 3px;
@@ -360,6 +360,18 @@ body {
 
     .search-input {
         width: 50%;
+    }
+
+    /* .card-body {
+    } */
+    
+    /* .card-title {
+        font-size: 0.8rem;
+    } */
+    
+    .card-text {
+        font-size: 85%;
+        flex-wrap: nowrap;
     }
 }
 
