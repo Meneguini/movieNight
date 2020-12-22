@@ -121,6 +121,7 @@ body {
     text-align: center;
     background-color: #f1edb5;
     background: radial-gradient(circle, rgba(241,237,181,1) 0%, rgba(235,223,65,1) 100%);
+    /* background: radial-gradient(circle,  #064b95 0%,  #0b2c4e 100%); */
 }
 
 .search-title {
@@ -130,6 +131,7 @@ body {
     margin-right: auto!important;
     width: 40%;
     color: #0056b3;
+    /* color: white; */
 }
 
 .search-input {
@@ -139,6 +141,7 @@ body {
 
 .form-comment {
     color:  #0056b3;
+    /* color: white; */
 }
 
 .title-index {
@@ -362,17 +365,6 @@ body {
         width: 50%;
     }
 
-    /* .card-body {
-    } */
-    
-    /* .card-title {
-        font-size: 0.8rem;
-    } */
-    
-    .card-text {
-        font-size: 85%;
-        flex-wrap: nowrap;
-    }
 }
 
 @media screen and (max-width: 980px) {

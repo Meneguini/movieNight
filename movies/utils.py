@@ -54,10 +54,29 @@ def movie_list(list, user):
 
 def lookup_movie_detail(id):
     # This function lookup movie details querying from The movie db
-    url = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'
-    response = requests.get(url.format(id, key)).json()
+    url_details = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'
+    response = requests.get(url_details.format(id, key)).json()
+    # Looking for director name
+    url_director = 'https://api.themoviedb.org/3/movie/{}/credits?api_key={}&language=en-US'
+    response_director = requests.get(url_director.format(id, key)).json()
+    print("crew", response_director['crew'])
+    for person in response_director['crew']:
+        print("director?", person['job'])
+        if person['job'] == 'Director':
+            print("directooorr", person['name'])
+            director = person['name']
+            break
 
-    return response
+    return {
+        'title': response['title'],
+        'id': response['id'],
+        'poster_path': response['poster_path'],
+        'overview': response['overview'],
+        'runtime': response['runtime'],
+        'release_date': response['release_date'],
+        'genres': response['genres'],
+        'director': director
+    }
     
 
 def lookup_latest_movies(page):
