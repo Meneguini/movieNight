@@ -6,6 +6,7 @@ from django.conf import settings
 # get api key from settings
 key = settings.MOVIE_KEY
 
+
 def lookup_trailer(id):
     # Query The movie db for the path for youtube videos
     url = ' https://api.themoviedb.org/3/movie/{}/videos?api_key={}&language=en-US'
@@ -29,9 +30,10 @@ def movie_list(list, user):
     for movie in list:
         # Getting all details of the movie with this function that will query from the movie api
         details = lookup_movie_detail(movie.site_id)
+        id = details['id']
         # Getting details from our db, such as if it was watched and how many stars
         try:
-            movie_check = Movie.objects.filter(list_owner=user, site_id=details['id'])
+            movie_check = Movie.objects.filter(list_owner=user, site_id=id)
         except:
             movie_check = "error"
             return movie_check
@@ -56,14 +58,15 @@ def lookup_movie_detail(id):
     # This function lookup movie details querying from The movie db
     url_details = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'
     response = requests.get(url_details.format(id, key)).json()
+    print(response['tagline'])
     # Looking for director name
     url_director = 'https://api.themoviedb.org/3/movie/{}/credits?api_key={}&language=en-US'
     response_director = requests.get(url_director.format(id, key)).json()
-    print("crew", response_director['crew'])
+    # print("crew", response_director['crew'])
     for person in response_director['crew']:
-        print("director?", person['job'])
+        # print("director?", person['job'])
         if person['job'] == 'Director':
-            print("directooorr", person['name'])
+            # print("directooorr", person['name'])
             director = person['name']
             break
 
@@ -75,18 +78,18 @@ def lookup_movie_detail(id):
         'runtime': response['runtime'],
         'release_date': response['release_date'],
         'genres': response['genres'],
-        'director': director
+        'director': director,
+        'production_countries': response['production_countries'],
+        'tagline': response['tagline'],
     }
-    
+
 
 def lookup_latest_movies(page):
     # Getting latest movies from The movie db
     url = 'https://api.themoviedb.org/3/movie/now_playing?api_key={}&language=en-US&page={}'
 
     response = requests.get(url.format(key, page)).json()
-        
     movies = response['results']
-    
     # If more than one page the request came from js. So the results need to be in json string before giving back to the view
     if page > 1:
         movies = json.dumps(movies)

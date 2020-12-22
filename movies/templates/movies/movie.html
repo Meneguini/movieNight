@@ -42,25 +42,38 @@
             {% endif %}
             
             <div class="media-body">
-                <p class="mt-0"><span class="bold">Overview:  </span> {{ details.overview }}</p>
-                <p><span class="bold">Duration:  </span> {{ details.runtime }}min</p>
+                <p class="title-poster">{{ details.title }}</p>
+                <p>{{ details.tagline }}</p>
                 <p><span class="bold">Released:  </span> {{ details.release_date }}</p>
+                <p><span class="bold">Duration:  </span> {{ details.runtime }}min</p>
+                <p class="mt-0"><span class="bold">Overview:  </span> {{ details.overview }}</p>
                 <p>
                     <span class="bold">Genres:  </span>
                     {% for name in details.genres %}
                         <span>{{ name.name }} |</span>
                     {% endfor %}
                 </p>
-                <p>{{ details.director }}</p>
+                <p>
+                    <span class="bold">Production Countries: </span>
+                    {% for country in details.production_countries %}
+                        <span>{{ country.name }} |</span>
+                    {% endfor %}
+                </p>
+                <p><span class="bold">Director: </span>{{ details.director }}</p>
             </div>
         </div>
 
+        <footer class="footer">
+        
+            <img class="tmdb" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" alt="themoviedb">
+            <p class="flaticon">All icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+            <p>&copy; Copyright {% now "Y" %}, Meneguini</p>
+            
+        </footer>
+
     </div>
     
-    <footer class="footer fixed">
-        <p class="flaticon">All icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
-        <img class="tmdb" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" alt="themoviedb">
-    </footer>
+
 {% endblock %}
 
 {% block script %}

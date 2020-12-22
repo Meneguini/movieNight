@@ -78,33 +78,23 @@ body {
 
 /* Footer */
 .footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* text-align: center; */
-    justify-items: center;
-    align-items: center;
+    padding: 1%;
+    text-align: center;
     background-color: #ebdf41;
-    /* position: fixed; */
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-.fixed {
-    position: fixed;
 }
 
 .flaticon {
-    width: 80%;
     color: #0056b3;
-    margin-top: 3%;
 }
 
 .tmdb {
-    width: 50%;
-    height: 40%;
+    width: 30%;
+    height: 10%;
+    margin-bottom: 2%;
+    margin-top: 1%;
 }
 
 /* Sign in */
@@ -215,6 +205,12 @@ body {
 }
 
 /* movie details page */
+
+.movie-detail-page {
+    position: relative;
+    padding-bottom: 15%;
+}
+
 .title-icon {
     display: grid;
     grid-template-columns: 80% 20%;
@@ -251,14 +247,19 @@ body {
 
 .media-movie {
     margin-top: 5%;
-    margin-bottom: 5%;
-    background-color: #0056b3;
+    /* background-color: #0056b3; */
+    background: radial-gradient(circle,  #0056b3 0%,  #0b2c4e 100%);
     color: white;
-    padding: 8%;
+    padding: 4%;
 }
 
 .media-body {
     margin-left: 3%;
+}
+
+.title-poster {
+    font-size: 1.9rem;
+    margin-bottom: 3%;
 }
 
 .bold {
@@ -267,9 +268,11 @@ body {
 }
 
 .poster-movie-details {
-    width: 30%;
-    height: 30%;
+    width: 25%;
+    /* height: 30%; */
 }
+
+
 
 /* Mylist page */
 .title-mylist {
@@ -421,8 +424,8 @@ body {
 
     .card {
         width: 80%;
+        margin-left: 10%;
     }
-
     /* Movie page */
     .trailer-container {
         padding-right: 2%;
