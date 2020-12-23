@@ -11,27 +11,26 @@ from . import utils
 from .models import User, Movie
 
 
-
 @login_required
 def update_star(request):
     if request.method != 'PUT':
         return JsonResponse({"error": "Not a PUT request"}, status=405)
-    # Getting the data from frontend 
+    # Getting the data from frontend
     data = json.loads(request.body)
     num = int(data.get("num"))
     id = data.get("id")
     # Trying to query the specific movie in the list of the logged user
     try:
         movie = Movie.objects.get(list_owner=request.user, site_id=id)
-        # If the user is querying to update the stars and the actual rate in the db is the same as the one comming from
+        # If the actual rate in the db is the same as the one comming from
         # the user it means that you need to update to 0
         if movie.rate == 1 and num == 1:
             num = 0
         movie.rate = num
         movie.save()
-    except:
+    except Exception:
         return JsonResponse({"error": "Stars not updated."}, status=500)
-    
+
     return JsonResponse({"msg": movie.rate}, status=200)
 
 
@@ -44,12 +43,12 @@ def eye_update(request):
     id = data.get("id")
     try:
         movie = Movie.objects.get(list_owner=request.user, site_id=id)
-    
-        if movie.watched == False:
+
+        if movie.watched is False:
             movie.watched = True
             movie.save()
             return JsonResponse({"msg": "watched"}, status=200)
-    except:
+    except Exception:
         return JsonResponse({"error": "Not able to update eye!"}, status=500)
 
     movie.watched = False
@@ -65,28 +64,28 @@ def delete_movie(request):
     data = json.loads(request.body)
     id = data.get("movie_id")
     try:
-        movie = Movie.objects.filter(list_owner=request.user, site_id=id).delete()
-    except:
+        Movie.objects.filter(list_owner=request.user, site_id=id).delete()
+    except Exception:
         return JsonResponse({"error": "movie not deleted"}, status=500)
 
     return JsonResponse({"msg": "deleted"}, status=200)
 
 
 def my_list(request, username):
-    # Getting the list from the username 
+    # Getting the list from the username
     try:
         user = User.objects.get(username=username)
-    except:
+    except Exception:
         return JsonResponse({"error": "User not found"}, status=400)
 
     try:
         my_list = Movie.objects.filter(list_owner=user)
-        # After getting the list of movies from the specific user, use utils function to get its details
+        # Use utils function to get movie details
         movies_details = utils.movie_list(my_list, user)
-    except:
+    except Exception:
         return JsonResponse({"error": "query doens't succed."}, status=400)
 
-    return render (request, "movies/mylist.html", {
+    return render(request, "movies/mylist.html", {
         "movies": movies_details,
         "user_logged": request.user.username,
         "user_list": username
@@ -102,27 +101,27 @@ def add_remove_list(request):
     id = data.get("id")
     title = data.get("title")
     list_icon = data.get("list")
-    
+
     if not id or not title:
-        return JsonResponse({"error": "Not able to add/remove from list!"}, status=400)
+        return JsonResponse({"error": "Movie not added/removed"}, status=400)
 
     if list_icon == 'blank':
         try:
             new_list = Movie.objects.create(list_owner=request.user, name=title, site_id=id, watched=False, rate=0)
             new_list.save()
-        except:
+        except Exception:
             return JsonResponse({"error": "Movie not added to the list"}, status=400)
 
         return JsonResponse({"msg": "added"}, status=200)
 
-    # If not blank means it is green I we need to remove it 
+    # If not blank means it is green I we need to remove it
     try:
         remove_list = Movie.objects.filter(list_owner=request.user, site_id=id)
         remove_list.delete()
-    except:
-        return JsonResponse({"error": "Not able to remove from list."}, status=400)
-    
-    return JsonResponse({"msg": "removed"},status=200)
+    except Exception:
+        return JsonResponse({"error": "Movie not removed."}, status=400)
+
+    return JsonResponse({"msg": "removed"}, status=200)
 
 
 def movie(request, id):
@@ -130,14 +129,14 @@ def movie(request, id):
     details = utils.lookup_movie_detail(id)
     trailer_id, trailer_site = utils.lookup_trailer(id)
     movie_id = details['id']
-    
+
     try:
         movie = Movie.objects.filter(list_owner=request.user, site_id=movie_id)
         list_movie = True
-    
+
         if len(movie) == 0:
             list_movie = False
-    except:
+    except Exception:
         list_movie = False
 
     return render(request, "movies/movie.html", {
@@ -149,9 +148,10 @@ def movie(request, id):
 
 
 def index(request):
-    # getting all movies from page 1 from The movie db using this utils' function
+    # getting all movies from page 1 from The movie db using this utils
+    print("entered index view")
     movies = utils.lookup_latest_movies(1)
-    
+    print("returning index view")
     return render(request, 'movies/index.html', {
         'movies': movies
     })
@@ -172,11 +172,11 @@ def search_title(request, title):
 
 def register(request):
 
-    if request.user:
-        return HttpResponseRedirect(reverse("index"))
+    # if request.user:
+    #     return HttpResponseRedirect(reverse("index"))
 
     if request.method != "POST":
-            return render(request, 'movies/register.html', status=405)
+        return render(request, 'movies/register.html', status=405)
 
     username = request.POST["username"]
     password = request.POST["password"]
@@ -186,7 +186,7 @@ def register(request):
         return render(request, "movies/register.html", {
             "msg": "Password and confirmation do not match or password doesn't have 6 min characters!"
         }, status=401)
-    
+
     # Trying to create new user
     try:
         new_user = User.objects.create_user(username, password)
@@ -194,19 +194,19 @@ def register(request):
     except IntegrityError:
         return render(request, "movies/register.html", {
             "msg": "Please, provide another username!"
-        },status=401)
+        }, status=401)
 
     login(request, new_user)
     return HttpResponseRedirect(reverse('index'))
 
 
 def sign_in(request):
-    if request.user:
-        return HttpResponseRedirect(reverse("index"))
+    # if request.user:
+    #     return HttpResponseRedirect(reverse("index"))
 
     if request.method != "POST":
         return render(request, "movies/login.html")
-    
+
     username = request.POST["username"]
     password = request.POST["password"]
 
@@ -214,7 +214,7 @@ def sign_in(request):
     if user is None:
         return render(request, "movies/login.html", {
             "msg": "Incorrect username or password. Please, try again!"
-        },status=401)
+        }, status=401)
 
     login(request, user)
     return HttpResponseRedirect(reverse("index"))

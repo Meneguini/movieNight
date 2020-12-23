@@ -91,8 +91,8 @@ body {
 }
 
 .tmdb {
-    width: 30%;
-    height: 10%;
+    width: 20%;
+    height: 5%;
     margin-bottom: 2%;
     margin-top: 1%;
 }
@@ -255,11 +255,13 @@ body {
 
 .media-body {
     margin-left: 3%;
+    font-size: 1.5rem;
 }
 
 .title-poster {
-    font-size: 1.9rem;
+    font-size: 2rem;
     margin-bottom: 3%;
+    color:  #ebdf41;
 }
 
 .bold {
@@ -268,10 +270,8 @@ body {
 }
 
 .poster-movie-details {
-    width: 25%;
-    /* height: 30%; */
+    width: 20%;
 }
-
 
 
 /* Mylist page */
@@ -333,23 +333,10 @@ body {
 /* Responsive */
 
 @media screen and (max-width: 1680px) {
-    /* .search-container {
-        padding-top: 1%;
-    } */
-    
-    /* .search-title {
-        font-size: 1.3rem;
-        width: 60%;
-    } */
-    
-    /* .search-input {
-        width: 80%;
-        margin-top: 2%;
-    } */
-    
-    /* .form-comment {
-        color:  red;
-    } */
+    /* Movie details page */
+    .poster-movie-details {
+        width: 30%;
+    }
 }
 
 @media screen and (max-width: 1280px) {    
@@ -383,6 +370,11 @@ body {
 
     .search-input {
         width: 60%;
+    }
+
+    /* Movie details */
+    .media-body {
+        font-size: 1.2rem;
     }
 }
 
@@ -426,6 +418,7 @@ body {
         width: 80%;
         margin-left: 10%;
     }
+
     /* Movie page */
     .trailer-container {
         padding-right: 2%;
@@ -444,13 +437,13 @@ body {
     }
 
     .poster-movie-details {
-        width: 70%;
-        height: 70%;
-        margin-left: 15%;
+        width: 40%;
+        /* height: 70%; */
+        margin-left: 30%;
     }
 
     .media-body {
-        margin-top: -10%;
+        margin-top: 4%;
     }
 
     .no-trailer {
@@ -478,7 +471,7 @@ body {
         margin-left: 15%;
     }
 
-    .media-body {
+    .media-body-list {
         margin-top: 10%;
         margin-bottom: 5%;
         padding-bottom: 5%;
@@ -519,11 +512,11 @@ body {
     }
 
     /* footer sigin */
-    .footer {
+    /* .footer {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
         text-align: center;
-    }
+    } */
     .flaticon {
         font-size: 60%;
         width: 90%;
