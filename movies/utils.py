@@ -29,10 +29,10 @@ def movie_list(list, user):
     final_list = []
 
     for movie in list:
-        # Getting all details of the movie with this function that will query from the movie api
+        # Getting all details of the movie with this utils function
         details = lookup_movie_detail(movie.site_id)
         id = details['id']
-        # Getting details from our db, such as if it was watched and how many stars
+        # Getting details from our db
         try:
             movie_check = Movie.objects.filter(list_owner=user, site_id=id)
         except Exception:
@@ -57,14 +57,13 @@ def movie_list(list, user):
 
 def lookup_movie_detail(id):
     # This function lookup movie details querying from The movie db
-    # url_details = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'
-    # response = requests.get(url_details.format(id, key)).json()
+    url_details = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'
+    response = requests.get(url_details.format(id, key)).json()
     # print(response['tagline'])
     # Looking for director name
     # url_director = 'https://api.themoviedb.org/3/movie/{}/credits?api_key={}&language=en-US'
     # response_director = requests.get(url_director.format(id, key)).json()
     # print("test", response_director['crew'][7])
-
 
     # for person in response_director['crew']:
     #     # print("director?", person['job'])
@@ -74,26 +73,16 @@ def lookup_movie_detail(id):
     #         break
 
     return {
-        # 'title': response['title'],
-        # 'id': response['id'],
-        # 'poster_path': response['poster_path'],
-        # 'overview': response['overview'],
-        # 'runtime': response['runtime'],
-        # 'release_date': response['release_date'],
-        # 'genres': response['genres'],
-        # 'director': "test",
-        # 'production_countries': response['production_countries'],
-        # 'tagline': response['tagline'],
-        'title': "a",
-        'id': "b",
-        'poster_path': "c",
-        'overview': "d",
-        'runtime': "e",
-        'release_date': "F",
-        'genres': "g",
-        'director': "test",
-        'production_countries': "d",
-        'tagline': "b",
+        'title': response['title'],
+        'id': response['id'],
+        'poster_path': response['poster_path'],
+        'overview': response['overview'],
+        'runtime': response['runtime'],
+        'release_date': response['release_date'],
+        'genres': response['genres'],
+        'director': "Provisory",
+        'production_countries': response['production_countries'],
+        'tagline': response['tagline'],
     }
 
 
@@ -107,7 +96,6 @@ def lookup_latest_movies(page):
     end_time = time.time()
     print("[UTILS] - lookup_latest_movies: API DONE", start_time - end_time)
     movies = response['results']
-    # If more than one page the request came from js. So the results need to be in json string before giving back to the view
     if page > 1:
         movies = json.dumps(movies)
         # print("movies in utils ", movies)
