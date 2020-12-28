@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import User, Movie
 
+
 # Configuring Admin
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'password')

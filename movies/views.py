@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, reverse
 from django.contrib.auth import authenticate, login, logout
@@ -7,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 import json
 
 from . import utils
-
-from .models import User, Movie
+# from django.contrib.auth.models import User
+from .models import Movie, User
 
 
 @login_required
@@ -170,47 +169,18 @@ def search_title(request, title):
     return JsonResponse(movie_searched, safe=False)
 
 
-def register(request):
-
-    # if request.user:
-    #     return HttpResponseRedirect(reverse("index"))
-
-    if request.method != "POST":
-        return render(request, 'movies/register.html', status=405)
-
-    username = request.POST["username"]
-    password = request.POST["password"]
-    confirmation = request.POST["confirmation"]
-
-    if password != confirmation or len(password) < 6:
-        return render(request, "movies/register.html", {
-            "msg": "Password and confirmation do not match or password doesn't have 6 min characters!"
-        }, status=401)
-
-    # Trying to create new user
-    try:
-        new_user = User.objects.create_user(username, password)
-        new_user.save()
-    except IntegrityError:
-        return render(request, "movies/register.html", {
-            "msg": "Please, provide another username!"
-        }, status=401)
-
-    login(request, new_user)
-    return HttpResponseRedirect(reverse('index'))
-
-
 def sign_in(request):
-    # if request.user:
-    #     return HttpResponseRedirect(reverse("index"))
 
     if request.method != "POST":
         return render(request, "movies/login.html")
 
     username = request.POST["username"]
     password = request.POST["password"]
+    print("[SIGIN] username", username)
+    print("[SIGIN] password", password)
 
     user = authenticate(request, username=username, password=password)
+    print("[SIGIN] user", user)
     if user is None:
         return render(request, "movies/login.html", {
             "msg": "Incorrect username or password. Please, try again!"
@@ -223,3 +193,33 @@ def sign_in(request):
 def sign_out(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
+
+
+def register(request):
+
+    if request.method != "POST":
+        return render(request, 'movies/register.html', status=405)
+
+    username = request.POST["username"]
+    password = request.POST["password"]
+    email = None
+    confirmation = request.POST["confirmation"]
+    print("[REGISTER] username", username)
+    print("[REGISTER] password", password)
+
+    if password != confirmation or len(password) < 6:
+        return render(request, "movies/register.html", {
+            "msg": "Password and confirmation do not match or password doesn't have 6 min characters!"
+        }, status=401)
+
+    # Trying to create new user
+    try:
+        user = User.objects.create_user(username, email, password)
+        user.save()
+    except IntegrityError:
+        return render(request, "movies/register.html", {
+            "msg": "Please, provide another username!"
+        }, status=401)
+
+    login(request, user)
+    return HttpResponseRedirect(reverse('index'))
