@@ -328,23 +328,6 @@ body {
     margin-left: 2%;
 }
 
-/* .media-mylist {
-    margin-top: 5%;
-    margin-left: 15%;
-    width: 70%;
-    background-color: #638db9;
-    color: white;
-    padding: 3%;
-    border-radius: 10px;
-    position: relative;
-} */
-
-/* .icons-box {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 30%;
-} */
-
 .card-mylist:hover {
     transform: none;
     transition: 0;
@@ -352,7 +335,7 @@ body {
 
 .card-body-mylist {
     padding: 5%;
-    background-color: #0f3966;
+    background-color: #0f77e6;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }
