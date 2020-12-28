@@ -3,86 +3,94 @@
 
 
 {% block body %}
+    <div class="mylist-page">
 
-    <div class="alert alert-danger" role="alert" style="display: none;"></div>
-    {% if user_logged == user_list %}
-        <h3 class="title-index title-mylist">My List of Movies</h3>
-    {% else %}
-        <h3 class="title-index title-mylist">{{ user_list.capitalize }} list of Movies</h3>
-    {% endif %}
-    <div class="social-icons">
-        <!-- to encrypt the text for twitter https://meyerweb.com/eric/tools/dencoder/ -->
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Here%20you%20can%20find%20my%20list%20of%20films.%20{{ request.build_absolute_uri }}" class="twitter-icon"><img src="{% static 'movies/icons/twitter.png' %}" alt="Google Plus" width="25" height="25"></a>
-        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="fb-xfbml-parse-ignore facebook-icon"><img src="{% static 'movies/icons/facebook.png' %}" alt="Facebook" width="25" height="25"></a>
-    </div>
+        <div class="alert alert-danger" role="alert" style="display: none;"></div>
+        {% if user_logged == user_list %}
+            <h3 class="title-index title-mylist">My List of Movies</h3>
+        {% else %}
+            <h3 class="title-index title-mylist">{{ user_list.capitalize }} list of Movies</h3>
+        {% endif %}
+        <div class="social-icons">
+            <!-- to encrypt the text for twitter https://meyerweb.com/eric/tools/dencoder/ -->
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Here%20you%20can%20find%20my%20list%20of%20films.%20{{ request.build_absolute_uri }}" class="twitter-icon"><img src="{% static 'movies/icons/twitter.png' %}" alt="Google Plus" width="25" height="25"></a>
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="fb-xfbml-parse-ignore facebook-icon"><img src="{% static 'movies/icons/facebook.png' %}" alt="Facebook" width="25" height="25"></a>
+        </div>
 
 
-      <div class="row row-cols-1 row-cols-md-5 movies-index">
-      
-        {% for movie in movies %}
-          <div class="col mb-4">
-            <div class="card card-mylist h-100">
-              {% if movie.poster_path == None %}
-              <a href="movie/{{ movie.id }}">
-                <img src='/static/movies/icons/file(1).png' class="no-img" alt="No Poster">
-              </a>
-              {% else %}
-              <a href="movie/{{ movie.id }}">
-                <img src='http://image.tmdb.org/t/p/w500//{{ movie.poster_path }}' class="card-img-top" alt="No Poster">
-              </a>
-              {% endif %}
-              <div class="card-body-mylist">
-                <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
-                <div class="stars-del">
-                    <p hidden>{{ movie.id }}</p>
-                    <div class="star-box">
-                        {% if movie.stars == 0 %}
-                            <img class="{% if user_logged == user_list %}star 1 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
-                            <img class="{% if user_logged == user_list %}star 1 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
-                        {% elif movie.stars >= 1 %}
-                            <img class="{% if user_logged == user_list %}star 1 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
-                            <img class="{% if user_logged == user_list %}star 1 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
-                        {% endif %}
-                        
-                        {% if movie.stars < 2 %}
-                            <img class="{% if user_logged == user_list %}star 2 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
-                            <img class="{% if user_logged == user_list %}star 2 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
-                        {% elif movie.stars > 1 %}
-                            <img class="{% if user_logged == user_list %}star 2 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
-                            <img class="{% if user_logged == user_list %}star 2 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
-                        {% endif %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 movies-index">
+        
+            {% for movie in movies %}
+            <div class="col mb-4">
+                <div class="card card-mylist h-100">
+                {% if movie.poster_path == None %}
+                <a href="movie/{{ movie.id }}">
+                    <img src='/static/movies/icons/file(1).png' class="no-img" alt="No Poster">
+                </a>
+                {% else %}
+                <a href="movie/{{ movie.id }}">
+                    <img src='http://image.tmdb.org/t/p/w500//{{ movie.poster_path }}' class="card-img-top" alt="No Poster">
+                </a>
+                {% endif %}
+                <div class="card-body-mylist">
+                    <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+                    <div class="stars-del">
+                        <p hidden>{{ movie.id }}</p>
+                        <div class="star-box">
+                            {% if movie.stars == 0 %}
+                                <img class="{% if user_logged == user_list %}star 1 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
+                                <img class="{% if user_logged == user_list %}star 1 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
+                            {% elif movie.stars >= 1 %}
+                                <img class="{% if user_logged == user_list %}star 1 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
+                                <img class="{% if user_logged == user_list %}star 1 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
+                            {% endif %}
+                            
+                            {% if movie.stars < 2 %}
+                                <img class="{% if user_logged == user_list %}star 2 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
+                                <img class="{% if user_logged == user_list %}star 2 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
+                            {% elif movie.stars > 1 %}
+                                <img class="{% if user_logged == user_list %}star 2 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
+                                <img class="{% if user_logged == user_list %}star 2 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
+                            {% endif %}
 
-                        {% if movie.stars < 3 %}
-                            <img class="{% if user_logged == user_list %}star 3 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
-                            <img class="{% if user_logged == user_list %}star 3 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
-                        {% elif movie.stars > 2 %}
-                            <img class="{% if user_logged == user_list %}star 3 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
-                            <img class="{% if user_logged == user_list %}star 3 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
-                        {% endif %}
+                            {% if movie.stars < 3 %}
+                                <img class="{% if user_logged == user_list %}star 3 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
+                                <img class="{% if user_logged == user_list %}star 3 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
+                            {% elif movie.stars > 2 %}
+                                <img class="{% if user_logged == user_list %}star 3 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
+                                <img class="{% if user_logged == user_list %}star 3 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
+                            {% endif %}
 
-                        {% if movie.stars < 4 %}
-                            <img class="{% if user_logged == user_list %}star 4 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
-                            <img class="{% if user_logged == user_list %}star 4 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
-                        {% elif movie.stars > 3 %}
-                            <img class="{% if user_logged == user_list %}star 4 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
-                            <img class="{% if user_logged == user_list %}star 4 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
-                        {% endif %}
+                            {% if movie.stars < 4 %}
+                                <img class="{% if user_logged == user_list %}star 4 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
+                                <img class="{% if user_logged == user_list %}star 4 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
+                            {% elif movie.stars > 3 %}
+                                <img class="{% if user_logged == user_list %}star 4 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
+                                <img class="{% if user_logged == user_list %}star 4 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
+                            {% endif %}
 
-                        {% if movie.stars < 5 %}
-                            <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
-                            <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
-                        {% elif movie.stars == 5 %}
-                            <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
-                            <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
-                        {% endif %}
+                            {% if movie.stars < 5 %}
+                                <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star">
+                                <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star" style="display: none;">
+                            {% elif movie.stars == 5 %}
+                                <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
+                                <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
+                            {% endif %}
+                        </div>
+                        <img class="{% if user_logged == user_list %}list-mylist mylist-hover{% endif %}" src="{% static 'movies/icons/cancel.png' %}" alt="List">
                     </div>
-                    <img class="{% if user_logged == user_list %}list-mylist mylist-hover{% endif %}" src="{% static 'movies/icons/cancel.png' %}" alt="List">
                 </div>
-              </div>
+                </div>
             </div>
-          </div>
-        {% endfor %}
-      </div>
+            {% endfor %}
+        </div>
+        <footer class="footer">
+            
+            <img class="tmdb" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" alt="themoviedb">
+            <p class="flaticon">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> and <a href="https://www.flaticon.com/free-icon/up-arrow_992534?term=arrow&page=3&position=9&related_item_id=992534" title="dmitri13">dmitri13</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+            <p class="copyright">&copy; Copyright {% now "Y" %}, Meneguini</p>
+        </footer>
+    </div>
 
 
 {% endblock %}
