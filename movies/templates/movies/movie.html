@@ -8,16 +8,23 @@
         <div class="alert alert-success" role="alert" style="display: none;"></div>
 
         <div class="title-icon">
-            <h3 class="movie-title p-4"> {{ details.title }} </h3>
+            <h3 class="movie-title"> {{ details.title }} </h3>
             <p class="movie-details-id" hidden>{{ details.id }}</p>
             
             {% if user.is_authenticated %}
                 {% if list_movie %}
-                    <img class="list-green" src="{% static 'movies/icons/checklist.png' %}" alt="Green checklist" width="40" height="40">
-                    <img class="list-blank" src="{% static 'movies/icons/checklist(1).png' %}" alt="Green checklist" width="40" height="40" style="display: none;">
+                
+                    <button type="button" class="btn btn-primary list-green">Remove from List</button>
+                    <button type="button" class="btn btn-primary list-blank" style="display: none;">Add to List</button>
+                
+                    <!-- <img class="list-green" src="{% static 'movies/icons/checklist.png' %}" alt="Green checklist" width="40" height="40">
+                    <img class="list-blank" src="{% static 'movies/icons/checklist(1).png' %}" alt="Green checklist" width="40" height="40" style="display: none;"> -->
                 {% else %}
-                    <img class="list-blank" src="{% static 'movies/icons/checklist(1).png' %}" alt="Green checklist" width="40" height="40">
-                    <img class="list-green" src="{% static 'movies/icons/checklist.png' %}" alt="Green checklist" width="40" height="40" style="display: none;">
+                    <button type="button" class="btn btn-primary list-blank">Add to List</button>
+                    <button type="button" class="btn btn-primary list-green" style="display: none;">Remove from List</button>
+
+                    <!-- <img class="list-blank" src="{% static 'movies/icons/checklist(1).png' %}" alt="Green checklist" width="40" height="40">
+                    <img class="list-green" src="{% static 'movies/icons/checklist.png' %}" alt="Green checklist" width="40" height="40" style="display: none;"> -->
                 {% endif %}
                 <!-- Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
             {% endif %}

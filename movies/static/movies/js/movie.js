@@ -47,8 +47,8 @@ function listClicked(list) {
 
 function updateIcons(msg) {
     if (msg.msg == "added") {
-        document.querySelector('.list-green').style.display = 'block';
         document.querySelector('.list-blank').style.display = 'none';
+        document.querySelector('.list-green').style.display = 'block';
         document.querySelector('.alert-success').style.display = "block";
         document.querySelector('.alert-success').innerHTML = 'Movie added to your list.';  
     }
