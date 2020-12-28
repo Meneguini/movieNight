@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
         movie.addEventListener('click', event => deleteMovie(event))
     })
     // adding event listener for eye 
-    document.querySelectorAll('.eye').forEach(eye => {
-        eye.addEventListener('click', event => fetchEye(event))
-    })
+    // document.querySelectorAll('.eye').forEach(eye => {
+    //     eye.addEventListener('click', event => fetchEye(event))
+    // })
     // adding event listener for all stars
     document.querySelectorAll('.star').forEach(star => {
         star.addEventListener('click', event => clickedStar(event))
@@ -110,39 +110,39 @@ function updateStar(rate, event) {
 
 }
 
-function watchUnwatch(answer, event) {
-    // update eye
-    if (answer == "not watched") {
-        event.target.style.display = 'none';
-        event.target.parentElement.children[1].style.display = 'block';  
-    }
-    else {
-        event.target.style.display = 'none';
-        event.target.parentElement.children[0].style.display = 'block';  
-    }
-}
+// function watchUnwatch(answer, event) {
+//     // update eye
+//     if (answer == "not watched") {
+//         event.target.style.display = 'none';
+//         event.target.parentElement.children[1].style.display = 'block';  
+//     }
+//     else {
+//         event.target.style.display = 'none';
+//         event.target.parentElement.children[0].style.display = 'block';  
+//     }
+// }
 
-function fetchEye(event) {
-    // fetch eye to mark if the movie was watched or not
-    let id = event.target.parentElement.parentElement.children[0].innerHTML;
-    const csrfToken = getCookie('csrftoken');
-    fetch('/eye_update', {
-        method: 'PUT',
-        headers: {
-            'X-CSRFToken': csrfToken,
-        },
-        body: JSON.stringify({
-            id: id
-        })
-    })
-    .then(response => response.json())
-    .then(msg => {
-        // update eye
-        watchUnwatch(msg.msg, event);
-    })
-    .catch(error => console.log(error));
-    return false;
-}
+// function fetchEye(event) {
+//     // fetch eye to mark if the movie was watched or not
+//     let id = event.target.parentElement.parentElement.children[0].innerHTML;
+//     const csrfToken = getCookie('csrftoken');
+//     fetch('/eye_update', {
+//         method: 'PUT',
+//         headers: {
+//             'X-CSRFToken': csrfToken,
+//         },
+//         body: JSON.stringify({
+//             id: id
+//         })
+//     })
+//     .then(response => response.json())
+//     .then(msg => {
+//         // update eye
+//         watchUnwatch(msg.msg, event);
+//     })
+//     .catch(error => console.log(error));
+//     return false;
+// }
 
 function deleteMovie(event) {
     // delete movie from user list with fetch
@@ -160,7 +160,7 @@ function deleteMovie(event) {
     .then(response => response.json())
     .then(msg => {
         // update list
-        updateList(msg, event.target.parentElement.parentElement);
+        updateList(msg, event.target.parentElement.parentElement.parentElement.parentElement);
     })
     .catch(error => console.log(error));
     return false;

@@ -98,7 +98,7 @@ function loadMovies(data) {
 
         p = document.createElement('p');
         p.className = "card-text";
-        p.innerHTML = 'Released: ' + movieBox.release_date;
+        p.innerHTML = movieBox.release_date;
 
         pId = document.createElement('p');
         pId.className = "id";

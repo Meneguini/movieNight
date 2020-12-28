@@ -17,7 +17,7 @@ urlpatterns = [
     path('movie/add_remove_list', views.add_remove_list, name="add_remove_list"),
     path('my_list/movie/add_remove_list', views.add_remove_list, name="add_remove_list"),
     path('delete_movie', views.delete_movie, name="delete_movie"),
-    path('eye_update', views.eye_update, name="eye_update"),
+    # path('eye_update', views.eye_update, name="eye_update"),
     path('update_star', views.update_star, name="update_star")
 
 ]

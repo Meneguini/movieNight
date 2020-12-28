@@ -1,4 +1,4 @@
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
@@ -33,26 +33,26 @@ def update_star(request):
     return JsonResponse({"msg": movie.rate}, status=200)
 
 
-@login_required
-def eye_update(request):
-    if request.method != 'PUT':
-        return JsonResponse({"error": "Not a PUT request"}, status=405)
+# @login_required
+# def eye_update(request):
+#     if request.method != 'PUT':
+#         return JsonResponse({"error": "Not a PUT request"}, status=405)
 
-    data = json.loads(request.body)
-    id = data.get("id")
-    try:
-        movie = Movie.objects.get(list_owner=request.user, site_id=id)
+#     data = json.loads(request.body)
+#     id = data.get("id")
+#     try:
+#         movie = Movie.objects.get(list_owner=request.user, site_id=id)
 
-        if movie.watched is False:
-            movie.watched = True
-            movie.save()
-            return JsonResponse({"msg": "watched"}, status=200)
-    except Exception:
-        return JsonResponse({"error": "Not able to update eye!"}, status=500)
+#         if movie.watched is False:
+#             movie.watched = True
+#             movie.save()
+#             return JsonResponse({"msg": "watched"}, status=200)
+#     except Exception:
+#         return JsonResponse({"error": "Not able to update eye!"}, status=500)
 
-    movie.watched = False
-    movie.save()
-    return JsonResponse({"msg": "not watched"}, status=200)
+#     movie.watched = False
+#     movie.save()
+#     return JsonResponse({"msg": "not watched"}, status=200)
 
 
 @login_required
@@ -109,7 +109,9 @@ def add_remove_list(request):
             new_list = Movie.objects.create(list_owner=request.user, name=title, site_id=id, watched=False, rate=0)
             new_list.save()
         except Exception:
-            return JsonResponse({"error": "Movie not added to the list"}, status=400)
+            return JsonResponse({
+                "error": "Movie not added to the list"
+                }, status=400)
 
         return JsonResponse({"msg": "added"}, status=200)
 
