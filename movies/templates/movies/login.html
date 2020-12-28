@@ -11,16 +11,16 @@
 
     <form method="post" action="{% url 'sign_in' %}" class="p-5 signin-form">
         {% csrf_token %}
-        <div class="form-group mx-auto w-75">
+        <div class="form-group mx-auto">
             <label class="blue">Name:</label>
             <input type="text" class="form-control name" name="username" required>
         </div>
-        <div class="form-group mx-auto w-75">
+        <div class="form-group mx-auto">
             <label class="blue">Password:</label>
             <input type="password" class="form-control password" name="password" required>
         </div>
         
-        <div class="form-group mx-auto w-75">
+        <div class="form-group mx-auto">
             <button type="submit" class="btn btn-primary submit">Submit</button>
         </div>
     </form>

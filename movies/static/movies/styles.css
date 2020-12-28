@@ -103,6 +103,10 @@ body {
     margin-top: 5%;
 }
 
+.form-group {
+    width: 40%;
+}
+
 /* index-page */
 
 .search-container {
@@ -367,6 +371,10 @@ body {
 }
 
 @media screen and (max-width: 980px) {
+    /* login */
+    .form-group {
+        width: 50%;
+    }
     /* Index */
     .search-container {
         height: 25vh;
@@ -547,6 +555,11 @@ body {
 
 /* Responsive */
 @media screen and (max-width: 600px){
+    /* Login */
+    .form-group {
+        width: 60%;
+    }
+
     /* Nav */
     .nav {
         display: none;
@@ -605,6 +618,11 @@ body {
 }
 
 @media screen and (max-width: 430px){
+    /* Login */
+    .form-group {
+        width: 80%;
+    }
+    
     /* Nav */
     .toggle-items {
         padding-top: 5%;
