@@ -9,8 +9,8 @@ body {
 /* Navbar */
 .navbar {
     width: 100%;
-    padding-left: 16%;
-    padding-right: 16%;
+    padding-left: 15%;
+    padding-right: 15%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -28,17 +28,18 @@ body {
 } 
 
 .navbar-brand {
+    margin-left: .5rem;
     margin-right: 0px;
     font-size: 150%;
     font-family: 'Bangers', cursive;
 }
 
 .icon-nav {
-    margin-right: 4%;
+    margin-right: 3%;
 }
 
 .paths {
-    margin-right: 3%;
+    /* margin-right: 3%; */
     justify-self: end;
 }
 
@@ -230,12 +231,11 @@ body {
     align-items: center;
 }
 
-
-
 .movie-title {
     color: #0056b3;
     margin-left: 20%;
     font-size: 2rem;
+    margin-top: 3%;
 }
 
 .list-blank:hover, .list-green:hover {
@@ -249,8 +249,8 @@ body {
 }
 
 .trailer-container {
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 15.5%;
+    padding-right: 15.5%;
 }
 
 .media-movie {
@@ -258,7 +258,10 @@ body {
     /* background-color: #0056b3; */
     background: radial-gradient(circle,  #0056b3 0%,  #0b2c4e 100%);
     color: white;
-    padding: 4%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 .media-body {
@@ -368,6 +371,11 @@ body {
         width: 50%;
     }
 
+    /* Movies detail */
+    .media-movie {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
 }
 
 @media screen and (max-width: 980px) {
