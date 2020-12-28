@@ -87,15 +87,16 @@ def lookup_movie_detail(id):
 
 
 def lookup_latest_movies(page):
-    start_time = time.time()
+    # start_time = time.time()
     print("[UTILS] - lookup_latest_moviees: START")
     # Getting latest movies from The movie db
     url = 'https://api.themoviedb.org/3/movie/now_playing?api_key={}&language=en-US&page={}'
 
     response = requests.get(url.format(key, page)).json()
-    end_time = time.time()
-    print("[UTILS] - lookup_latest_movies: API DONE", start_time - end_time)
+    # end_time = time.time()
+    # print("[UTILS] - lookup_latest_movies: API DONE", start_time - end_time)
     movies = response['results']
+    print("[UTILS] - lookup_latest_movies: RESULTS", movies)
     if page > 1:
         movies = json.dumps(movies)
         # print("movies in utils ", movies)

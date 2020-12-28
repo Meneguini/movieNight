@@ -1,11 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("loaded");
-    // When document is loaded add scroll listener and call loadMore
-    // window.addEventListener('scroll', () => {
-    //     loadMore();
-    //     // check sytle display of back to top button
-    //     scrollTop();
-    // }, false);
+    
     window.addEventListener('scroll', loadMore);
     window.addEventListener('scroll', scrollTop);
 
@@ -89,6 +84,12 @@ function loadMovies(data) {
 
         img.alt = "No poster";
 
+        listDetail = document.createElement('div');
+        listDetail.className = 'grey-msg';
+        listStatus = document.createElement('small');
+        listStatus.innerHTML = 'Add to list';
+        listDetail.append(listStatus);
+
         divBody = document.createElement('div');
         divBody.className = "card-body";
 
@@ -106,7 +107,7 @@ function loadMovies(data) {
         pId.hidden = true;
 
         divBody.append(h5, p, pId);
-        divCard.append(img, divBody);
+        divCard.append(img, listDetail, divBody);
         div.append(divCard);
         document.querySelector('.movies-index').append(div);
     });

@@ -33,18 +33,28 @@
       
         {% for movie in movies %}
           <div class="col mb-4">
-            <a href="movie/{{ movie.id }}" class="card h-100">
+            <div class="card h-100">
               {% if movie.poster_path == None %}
+              <a href="movie/{{ movie.id }}">
                 <img src='/static/movies/icons/file(1).png' class="no-img" alt="No Poster">
+                <div class="grey-msg"><small>Add to list</small></div>
+              </a>
               {% else %}
+              <a href="movie/{{ movie.id }}">
                 <img src='http://image.tmdb.org/t/p/w500//{{ movie.poster_path }}' class="card-img-top" alt="No Poster">
+              </a>
+              <div class="grey-msg"><small>Add to list</small></div>
+              
               {% endif %}
               <div class="card-body">
                 <h5 class="card-title">{{ movie.title }}</h5>
                 <p class="card-text">{{ movie.release_date }}</p>
                 <!-- <p class="id" hidden>{{ movie.id }}</p> -->
               </div>
-            </a>
+              <!-- <div class="card-footer">
+                <small class="">Add to your list</small>
+              </div> -->
+            </div>
           </div>
         {% endfor %}
       </div>

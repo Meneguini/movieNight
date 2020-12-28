@@ -184,10 +184,10 @@ body {
     box-shadow: 3px 3px 3px 0px rgba(65, 65, 65, 0.3);
 }
 
-.card:hover {
+/* .card:hover {
     transform: scale(1.02);
     transition: 0.1s;
-}
+} */
 
 .card-body {
     padding: 0.7rem;
@@ -198,10 +198,39 @@ body {
     border-bottom-right-radius: 3px;
 }
 
+/* .card-footer {
+    background-color: rgba(189, 159, 50, 0.5);
+    color: white;
+    padding: 3%;
+    text-align: center;
+} */
+
 .card-img-top {
     text-align: center;
     font-size: 150%;
     text-decoration: underline;
+    position: relative;
+}
+
+.no-img {
+    margin: 5%;
+    margin-bottom: 15%;
+    margin-top: 15%;
+    width: 80%;
+    height: 80%;
+    position: relative;
+}
+
+.grey-msg {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    background-color: rgba(73, 71, 71, 0.9);
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    width: 100%;
+    height: 8%;
+    color: #c9af50;
 }
 
 .card-title {
@@ -212,14 +241,6 @@ body {
 .card-text {
     font-size: 85%;
     flex-wrap: nowrap;
-}
-
-.no-img {
-    margin: 5%;
-    margin-bottom: 15%;
-    margin-top: 15%;
-    width: 80%;
-    height: 80%;
 }
 
 /* movie details page */
