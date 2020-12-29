@@ -173,6 +173,9 @@ def search_title(request, title):
 
 def sign_in(request):
 
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("index"))
+
     if request.method != "POST":
         return render(request, "movies/login.html")
 
@@ -198,6 +201,9 @@ def sign_out(request):
 
 
 def register(request):
+    # Doesn't allow user logged to access page
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("index"))
 
     if request.method != "POST":
         return render(request, 'movies/register.html', status=405)
