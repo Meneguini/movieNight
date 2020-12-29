@@ -55,19 +55,19 @@ def update_star(request):
 #     return JsonResponse({"msg": "not watched"}, status=200)
 
 
-# @login_required
-# def delete_movie(request):
-#     if request.method != 'PUT':
-#         return JsonResponse({"error": "Method not PUT"}, status=405)
+@login_required
+def delete_movie(request):
+    if request.method != 'PUT':
+        return JsonResponse({"error": "Method not PUT"}, status=405)
 
-#     data = json.loads(request.body)
-#     id = data.get("movie_id")
-#     try:
-#         Movie.objects.filter(list_owner=request.user, site_id=id).delete()
-#     except Exception:
-#         return JsonResponse({"error": "movie not deleted"}, status=500)
+    data = json.loads(request.body)
+    id = data.get("movie_id")
+    try:
+        Movie.objects.filter(list_owner=request.user, site_id=id).delete()
+    except Exception:
+        return JsonResponse({"error": "movie not deleted"}, status=500)
 
-#     return JsonResponse({"msg": "deleted"}, status=200)
+    return JsonResponse({"msg": "deleted"}, status=200)
 
 
 def my_list(request, username):

@@ -24,7 +24,7 @@ function listClicked(list) {
     title = document.querySelector('.movie-title').innerHTML;
     const csrfToken = getCookie('csrftoken');    
 
-    fetch('add_remove_list', {
+    fetch('/add_remove_list', {
         method: 'POST',
         headers: {
             'X-CSRFToken': csrfToken,
