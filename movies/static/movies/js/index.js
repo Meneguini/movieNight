@@ -7,11 +7,65 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.btn-top').addEventListener('click', backToTop);
     // add event listener to search btn 
     document.querySelector('.index-btn').addEventListener('click', fetchSearch);
+    if (document.querySelector('.green')) {
+        document.querySelectorAll('.green').forEach(movie => {
+            movie.addEventListener('click', event => addToList(event, 'green'));
+        })
+    }
+    if (document.querySelector('.blank')) {
+        document.querySelectorAll('.blank').forEach(movie => {
+            movie.addEventListener('click', event => addToList(event, 'blank'));
+        })
+    }
+
 });
 
 // Global variables 
 let pageCounter = 1
 let page = 0
+
+// Add movie to list
+function addToList(evt, list) {
+    console.log("[INDEX] addToList - id", evt.target.id);
+    console.log("[INDEX] addToList - title", evt.target.parentElement.parentElement.children[2].children[0].innerHTML);
+    movieId = evt.target.id;
+    title = evt.target.parentElement.parentElement.children[2].children[0].innerHTML;
+    
+    const csrfToken = getCookie('csrftoken');    
+
+    fetch('/add_remove_list', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken,
+        },
+        body: JSON.stringify({
+            id: movieId,
+            title: title,
+            list: list,
+        })
+    })
+    .then(response => response.json())
+    .then(msg => {
+        // update icons
+        console.log(msg);
+
+        updateMovieStatus(evt, msg);
+    })
+    .catch(error => console.log(error));
+    return false;
+}
+
+// Update movie status after adding/deleting from list
+function updateMovieStatus(evt, msg) {
+    if (msg.msg == 'added') {
+        evt.target.style.display = 'none';
+        evt.target.parentElement.children[1].style.display = 'block';
+    }
+    if (msg.msg == 'removed') {
+        evt.target.style.display = 'none';
+        evt.target.parentElement.children[0].style.display = 'block';
+    }
+}
 
 // Load more set at what point you will call the function with the fetch and turn off the scroll listener 
 function loadMore() {
@@ -21,7 +75,6 @@ function loadMore() {
            window.removeEventListener('scroll', loadMore);
         }
         fetchNext();
-        
     }
 }
 
@@ -68,9 +121,11 @@ function loadMovies(data) {
         div = document.createElement('div');
         div.className = "col mb-4";
 
-        divCard = document.createElement('a');
-        divCard.href = `movie/${movieBox.id}`;
+        divCard = document.createElement('div');
         divCard.className = "card";
+
+        divA = document.createElement('a');
+        divA.href = `movie/${movieBox.id}`;
 
         img = document.createElement('img');
         if(movieBox.poster_path != null){ 
@@ -82,13 +137,32 @@ function loadMovies(data) {
             img.className = "no-img";
         }
 
+        divA.append(img);
+
         img.alt = "No poster";
 
         listDetail = document.createElement('div');
         listDetail.className = 'grey-msg';
         listStatus = document.createElement('small');
         listStatus.innerHTML = 'Add to list';
-        listDetail.append(listStatus);
+        listStatus.className = 'blank';
+        listStatus.id = movieBox.id;
+        listStatus.style.display = 'block';
+        listStatus.addEventListener('click', event => addToList(event, 'blank'))
+
+        listStatus1 = document.createElement('small');
+        listStatus1.innerHTML = 'Remove from list';
+        listStatus1.className = 'green';
+        listStatus1.id = movieBox.id;
+        listStatus1.style.display = 'none';
+        listStatus1.addEventListener('click', event => addToList(event, 'green'))
+
+        if (movieBox.in_list) {
+            listStatus1.style.display = 'block';
+            listStatus.style.display = 'none';
+        }
+
+        listDetail.append(listStatus, listStatus1);
 
         divBody = document.createElement('div');
         divBody.className = "card-body";
@@ -107,7 +181,7 @@ function loadMovies(data) {
         pId.hidden = true;
 
         divBody.append(h5, p, pId);
-        divCard.append(img, listDetail, divBody);
+        divCard.append(divA, listDetail, divBody);
         div.append(divCard);
         document.querySelector('.movies-index').append(div);
     });
@@ -148,4 +222,20 @@ function searchedLoad(content) {
     loadMovies(content);
     // Cancel the infinite scroll
     window.removeEventListener('scroll', loadMore);
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }

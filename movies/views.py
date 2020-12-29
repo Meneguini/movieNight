@@ -55,19 +55,19 @@ def update_star(request):
 #     return JsonResponse({"msg": "not watched"}, status=200)
 
 
-@login_required
-def delete_movie(request):
-    if request.method != 'PUT':
-        return JsonResponse({"error": "Method not PUT"}, status=405)
+# @login_required
+# def delete_movie(request):
+#     if request.method != 'PUT':
+#         return JsonResponse({"error": "Method not PUT"}, status=405)
 
-    data = json.loads(request.body)
-    id = data.get("movie_id")
-    try:
-        Movie.objects.filter(list_owner=request.user, site_id=id).delete()
-    except Exception:
-        return JsonResponse({"error": "movie not deleted"}, status=500)
+#     data = json.loads(request.body)
+#     id = data.get("movie_id")
+#     try:
+#         Movie.objects.filter(list_owner=request.user, site_id=id).delete()
+#     except Exception:
+#         return JsonResponse({"error": "movie not deleted"}, status=500)
 
-    return JsonResponse({"msg": "deleted"}, status=200)
+#     return JsonResponse({"msg": "deleted"}, status=200)
 
 
 def my_list(request, username):
@@ -151,7 +151,7 @@ def movie(request, id):
 def index(request):
     # getting all movies from page 1 from The movie db using this utils
     print("entered index view")
-    movies = utils.lookup_latest_movies(1)
+    movies = utils.lookup_latest_movies(1, request.user)
     print("returning index view")
     return render(request, 'movies/index.html', {
         'movies': movies
@@ -160,7 +160,7 @@ def index(request):
 
 def latest(request, page):
     # looking up the latest movies with specific page for javascript fetch
-    next_movies = utils.lookup_latest_movies(int(page))
+    next_movies = utils.lookup_latest_movies(int(page), request.user)
     return JsonResponse(next_movies, safe=False)
 
 

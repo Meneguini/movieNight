@@ -29,7 +29,7 @@
         <img class="btn-top" src="{% static 'movies/icons/up-arrow(1).png' %}" alt="Back-to-top" width="40" height="40">
       </div>
       
-      <div class="row row-cols-1 row-cols-md-5 movies-index">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 movies-index">
       
         {% for movie in movies %}
           <div class="col mb-4">
@@ -37,23 +37,29 @@
               {% if movie.poster_path == None %}
               <a href="movie/{{ movie.id }}">
                 <img src='/static/movies/icons/file(1).png' class="no-img" alt="No Poster">
-                <div class="grey-msg"><small>Add to list</small></div>
               </a>
               {% else %}
               <a href="movie/{{ movie.id }}">
                 <img src='http://image.tmdb.org/t/p/w500//{{ movie.poster_path }}' class="card-img-top" alt="No Poster">
               </a>
-              <div class="grey-msg"><small>Add to list</small></div>
-              
+              {% endif %}
+              {% if user.is_authenticated and movie.in_list %}
+              <div class="grey-msg">
+                <small class="blank" id="{{ movie.id }}" style="display: none;">Add to list</small>
+                <small class="green" id="{{ movie.id }}">Remove from list</small>
+              </div>
+              {% endif %}
+              {% if user.is_authenticated and not movie.in_list %}
+              <div class="grey-msg">
+                <small class="blank" id="{{ movie.id }}">Add to list</small>
+                <small class="green" id="{{ movie.id }}" style="display: none;">Remove from list</small>
+              </div>
               {% endif %}
               <div class="card-body">
                 <h5 class="card-title">{{ movie.title }}</h5>
                 <p class="card-text">{{ movie.release_date }}</p>
                 <!-- <p class="id" hidden>{{ movie.id }}</p> -->
               </div>
-              <!-- <div class="card-footer">
-                <small class="">Add to your list</small>
-              </div> -->
             </div>
           </div>
         {% endfor %}

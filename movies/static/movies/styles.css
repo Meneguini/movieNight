@@ -42,7 +42,7 @@ body {
 .paths {
     /* margin-right: 3%; */
     justify-self: end;
-
+    font-weight: bolder;
 }
 
 .toggled {
@@ -69,7 +69,7 @@ body {
 }
 
 .welcome {
-    color: #79949c;
+    color:  #a89240;
 }
 
 .welcome-responsive {
@@ -107,7 +107,7 @@ body {
 
 /* Sign in */
 .signin-form {
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .form-group {
@@ -226,12 +226,22 @@ body {
     text-align: center;
     position: absolute;
     top: 0;
-    background-color: rgba(73, 71, 71, 0.9);
+    /* background-color: rgba(73, 71, 71, 0.9); */
+    background-color: rgba(0, 0, 0, 0.7);
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
     width: 100%;
     height: 8%;
     color: #c9af50;
+}
+
+.green {
+    color: rgb(109, 216, 109);
+
+}
+
+.blank, .green {
+    margin-top: 3%;
 }
 
 .card-title {
@@ -456,6 +466,10 @@ body {
         width: 60%;
     }
 
+    .grey-msg {
+        font-size: 0.9rem;
+    }
+
     /* Movie details */
     .media-body {
         font-size: 1.2rem;
@@ -620,6 +634,11 @@ body {
         font-size: 0.8rem;
         width: 80%;
     }
+
+    .grey-msg {
+        font-size: 1.1rem;
+    }
+
     /* Movie details */
 
     .movie-detail-page {

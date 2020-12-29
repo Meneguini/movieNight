@@ -86,17 +86,38 @@ def lookup_movie_detail(id):
     }
 
 
-def lookup_latest_movies(page):
+def lookup_latest_movies(page, user):
     # start_time = time.time()
-    print("[UTILS] - lookup_latest_moviees: START")
+    print("[UTILS] - lookup_latest_movies: START")
     # Getting latest movies from The movie db
     url = 'https://api.themoviedb.org/3/movie/now_playing?api_key={}&language=en-US&page={}'
 
     response = requests.get(url.format(key, page)).json()
     # end_time = time.time()
     # print("[UTILS] - lookup_latest_movies: API DONE", start_time - end_time)
-    movies = response['results']
-    print("[UTILS] - lookup_latest_movies: RESULTS", movies)
+    # results = response['results']
+    # print("[UTILS] - lookup_latest_movies: RESULTS", results)
+    movies = []
+    for movie in response['results']:
+        # print("[UTILS] - lookup_lates_movies - movie", movie)
+
+        try:
+            in_list = Movie.objects.get(list_owner=user, site_id=movie['id'])
+            in_list = True
+        except Exception:
+            in_list = False
+
+        # print("[UTILS] - in_list: ", in_list)
+
+        movie_data = {
+            "id": movie['id'],
+            "title": movie['title'],
+            "poster_path": movie['poster_path'],
+            "release_date": movie['release_date'],
+            "in_list": in_list
+        }
+        movies.append(movie_data)
+
     if page > 1:
         movies = json.dumps(movies)
         # print("movies in utils ", movies)
