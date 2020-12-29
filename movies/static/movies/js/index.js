@@ -26,8 +26,8 @@ let page = 0
 
 // Add movie to list
 function addToList(evt, list) {
-    console.log("[INDEX] addToList - id", evt.target.id);
-    console.log("[INDEX] addToList - title", evt.target.parentElement.parentElement.children[2].children[0].innerHTML);
+    // console.log("[INDEX] addToList - id", evt.target.id);
+    // console.log("[INDEX] addToList - title", evt.target.parentElement.parentElement.children[2].children[0].innerHTML);
     movieId = evt.target.id;
     title = evt.target.parentElement.parentElement.children[2].children[0].innerHTML;
     
@@ -115,6 +115,7 @@ function fetchNext() {
 }
 
 function loadMovies(data) {
+    console.log("[load movie] - data", data);
     // for each movie create the elements to add to the html using the same classes from bootstrap
     data.forEach(movieBox => {
 
@@ -141,28 +142,33 @@ function loadMovies(data) {
 
         img.alt = "No poster";
 
-        listDetail = document.createElement('div');
-        listDetail.className = 'grey-msg';
-        listStatus = document.createElement('small');
-        listStatus.innerHTML = 'Add to list';
-        listStatus.className = 'blank';
-        listStatus.id = movieBox.id;
-        listStatus.style.display = 'block';
-        listStatus.addEventListener('click', event => addToList(event, 'blank'))
+        listDetail = '';
 
-        listStatus1 = document.createElement('small');
-        listStatus1.innerHTML = 'Remove from list';
-        listStatus1.className = 'green';
-        listStatus1.id = movieBox.id;
-        listStatus1.style.display = 'none';
-        listStatus1.addEventListener('click', event => addToList(event, 'green'))
+        if (document.querySelector('#user-logged')) {
 
-        if (movieBox.in_list) {
-            listStatus1.style.display = 'block';
-            listStatus.style.display = 'none';
+            listDetail = document.createElement('div');
+            listDetail.className = 'grey-msg';
+            listStatus = document.createElement('small');
+            listStatus.innerHTML = 'Add to list';
+            listStatus.className = 'blank';
+            listStatus.id = movieBox.id;
+            listStatus.style.display = 'block';
+            listStatus.addEventListener('click', event => addToList(event, 'blank'))
+    
+            listStatus1 = document.createElement('small');
+            listStatus1.innerHTML = 'Remove from list';
+            listStatus1.className = 'green';
+            listStatus1.id = movieBox.id;
+            listStatus1.style.display = 'none';
+            listStatus1.addEventListener('click', event => addToList(event, 'green'))
+    
+            if (movieBox.in_list) {
+                listStatus1.style.display = 'block';
+                listStatus.style.display = 'none';
+            }
+    
+            listDetail.append(listStatus, listStatus1);
         }
-
-        listDetail.append(listStatus, listStatus1);
 
         divBody = document.createElement('div');
         divBody.className = "card-body";

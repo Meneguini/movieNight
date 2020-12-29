@@ -8,6 +8,9 @@
         {{ msg }}
     </div>
   {% endif %}
+  {% if user.is_authenticated %}
+    <div id="user-logged" hidden></div>
+  {% endif %}
   <div class="index-page">
     <div class="search-container">
       <p class="search-title">Search for your favorite movies!</p>
