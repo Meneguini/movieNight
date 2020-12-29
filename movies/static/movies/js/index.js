@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("loaded");
     
     window.addEventListener('scroll', loadMore);
     window.addEventListener('scroll', scrollTop);
 
     document.querySelector('.btn-top').addEventListener('click', backToTop);
-    // add event listener to search btn 
+
+    // Add event listener to search btn 
     document.querySelector('.index-btn').addEventListener('click', fetchSearch);
     if (document.querySelector('.green')) {
         document.querySelectorAll('.green').forEach(movie => {
@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
             movie.addEventListener('click', event => addToList(event, 'blank'));
         })
     }
-
 });
 
 // Global variables 
@@ -26,8 +25,6 @@ let page = 0
 
 // Add movie to list
 function addToList(evt, list) {
-    // console.log("[INDEX] addToList - id", evt.target.id);
-    // console.log("[INDEX] addToList - title", evt.target.parentElement.parentElement.children[2].children[0].innerHTML);
     movieId = evt.target.id;
     title = evt.target.parentElement.parentElement.children[2].children[0].innerHTML;
     
@@ -46,9 +43,7 @@ function addToList(evt, list) {
     })
     .then(response => response.json())
     .then(msg => {
-        // update icons
-        console.log(msg);
-
+        // update 
         updateMovieStatus(evt, msg);
     })
     .catch(error => console.log(error));
@@ -98,7 +93,6 @@ function backToTop() {
 function fetchNext() {
     
     page = pageCounter + 1
-    // window.removeEventListener('scroll', loadMore);
         
     fetch(`/latest/${page}`)
     .then(response => response.json())
