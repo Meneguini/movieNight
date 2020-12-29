@@ -180,14 +180,15 @@ body {
 }
 
 .card {
+    height: 100%;
     border: none;
     box-shadow: 3px 3px 3px 0px rgba(65, 65, 65, 0.3);
 }
 
-/* .card:hover {
+.card:hover {
     transform: scale(1.02);
     transition: 0.1s;
-} */
+}
 
 .card-body {
     padding: 0.7rem;
