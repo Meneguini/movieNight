@@ -17,6 +17,11 @@
             <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="fb-xfbml-parse-ignore facebook-icon"><img src="{% static 'movies/icons/facebook.png' %}" alt="Facebook" width="25" height="25"></a>
         </div>
 
+        {% if not movies %}
+            <div class="empty-list-div">
+                <h3>Your list is empty</h3>
+            </div>
+        {% endif %}
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 movies-index">
         
@@ -85,9 +90,8 @@
             {% endfor %}
         </div>
         <footer class="footer">
-            
-            <img class="tmdb" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" alt="themoviedb">
             <p class="flaticon">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> , <a href="https://www.flaticon.com/free-icon/up-arrow_992534?term=arrow&page=3&position=9&related_item_id=992534" title="dmitri13">dmitri13</a> and <a href="https://icon54.com/" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+            <img class="tmdb" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" alt="themoviedb">
             <p class="copyright">&copy; Copyright {% now "Y" %}, Meneguini</p>
         </footer>
     </div>

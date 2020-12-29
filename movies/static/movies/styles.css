@@ -97,15 +97,22 @@ body {
 .tmdb {
     width: 20%;
     height: 5%;
-    margin-bottom: 2%;
-    margin-top: 1%;
+    margin-bottom: 1%;
+    /* margin-top: 0.5%; */
 }
 
 .copyright {
     color: white;
 }
 
-/* Sign in */
+/* Signin / Register */
+
+.signin-page, .register-page {
+    position: relative;
+    padding-bottom: 15%;
+    min-height: 90vh;
+}
+
 .signin-form {
     margin-top: 2%;
 }
@@ -198,13 +205,6 @@ body {
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }
-
-/* .card-footer {
-    background-color: rgba(189, 159, 50, 0.5);
-    color: white;
-    padding: 3%;
-    text-align: center;
-} */
 
 .card-img-top {
     text-align: center;
@@ -340,6 +340,7 @@ body {
 .mylist-page {
     position: relative;
     padding-bottom: 15%;
+    min-height: 90vh;
 }
 
 .title-mylist {
@@ -358,6 +359,13 @@ body {
 
 .facebook-icon {
     margin-left: 2%;
+}
+
+.empty-list-div {
+    text-align: center;
+    margin-top: 10%;
+    min-height: 20vh;
+    color: #63adf2;
 }
 
 .card-mylist:hover {
@@ -587,12 +595,6 @@ body {
         text-align: center;
     }
 
-    /* footer sigin */
-    /* .footer {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        text-align: center;
-    } */
     .flaticon {
         font-size: 60%;
         /* width: 90%; */
@@ -744,22 +746,8 @@ body {
     }
 
     /* Footer */
-    /* .footer {
-        padding: 1%;
-        text-align: center;
-        background-color: #ebdf41;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-    } */
-
-    /* .flaticon {
-        color: #0056b3;
-    } */
-
     .tmdb {
         width: 30%;
     }
         
-
 }
