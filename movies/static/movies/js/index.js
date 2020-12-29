@@ -115,7 +115,6 @@ function fetchNext() {
 }
 
 function loadMovies(data) {
-    console.log("[load movie] - data", data);
     // for each movie create the elements to add to the html using the same classes from bootstrap
     data.forEach(movieBox => {
 

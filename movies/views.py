@@ -128,7 +128,7 @@ def add_remove_list(request):
 def movie(request, id):
     # looking up a specific movie details including its trailer
     details = utils.lookup_movie_detail(id)
-    trailer_id, trailer_site = utils.lookup_trailer(id)
+    # trailer_id, trailer_site = utils.lookup_trailer(id)
     movie_id = details['id']
 
     try:
@@ -142,8 +142,8 @@ def movie(request, id):
 
     return render(request, "movies/movie.html", {
         "details": details,
-        "trailer_site": trailer_site,
-        "trailer_id": trailer_id,
+        # "trailer_site": trailer_site,
+        # "trailer_id": trailer_id,
         "list_movie": list_movie
     })
 

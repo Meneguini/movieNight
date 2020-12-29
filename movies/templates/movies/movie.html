@@ -29,10 +29,10 @@
                 <!-- Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
             {% endif %}
         </div>
-        {% if trailer_site %}
+        {% if details.trailer_site %}
             <div class="trailer-container">
                 <div class="embed-responsive embed-responsive-21by9">
-                    <iframe class="embed-responsive-item iframe" src="https://www.youtube-nocookie.com/embed/{{ trailer_id }}" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item iframe" src="https://www.youtube-nocookie.com/embed/{{ details.trailer_id }}" allowfullscreen></iframe>
                 </div>
             </div>
         {% else %}
@@ -65,7 +65,11 @@
                         <span>{{ country.name }} |</span>
                     {% endfor %}
                 </p>
-                <p><span class="bold">Director: </span>{{ details.director }}</p>
+                <p><span class="bold">Director: </span>
+                    {% for name in details.director %}
+                        {{ name }} |
+                    {% endfor %}
+                </p>
             </div>
         </div>
 

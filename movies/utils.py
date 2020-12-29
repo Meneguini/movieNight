@@ -8,20 +8,20 @@ import time
 key = settings.MOVIE_KEY
 
 
-def lookup_trailer(id):
-    # Query The movie db for the path for youtube videos
-    url = ' https://api.themoviedb.org/3/movie/{}/videos?api_key={}&language=en-US'
-    response = requests.get(url.format(id, key)).json()
-    result = response['results']
-    if result == []:
-        trailer_site = False
-        trailer_id = False
-        return trailer_id, trailer_site
+# def lookup_trailer(id):
+#     # Query The movie db for the path for youtube videos
+#     url = ' https://api.themoviedb.org/3/movie/{}/videos?api_key={}&language=en-US'
+#     response = requests.get(url.format(id, key)).json()
+#     result = response['results']
+#     if result == []:
+#         trailer_site = False
+#         trailer_id = False
+#         return trailer_id, trailer_site
 
-    trailer_site = result[0]['site']
-    trailer_id = result[0]['key']
+#     trailer_site = result[0]['site']
+#     trailer_id = result[0]['key']
 
-    return trailer_id, trailer_site
+#     return trailer_id, trailer_site
 
 
 def movie_list(list, user):
@@ -57,20 +57,24 @@ def movie_list(list, user):
 
 def lookup_movie_detail(id):
     # This function lookup movie details querying from The movie db
-    url_details = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'
-    response = requests.get(url_details.format(id, key)).json()
-    # print(response['tagline'])
-    # Looking for director name
-    # url_director = 'https://api.themoviedb.org/3/movie/{}/credits?api_key={}&language=en-US'
-    # response_director = requests.get(url_director.format(id, key)).json()
-    # print("test", response_director['crew'][7])
+    # url_details = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'
 
-    # for person in response_director['crew']:
-    #     # print("director?", person['job'])
-    #     if person['job'] == 'Director':
-    #         # print("directooorr", person['name'])
-    #         director = person['name']
-    #         break
+    url_details = 'https://api.themoviedb.org/3/movie/{}?api_key={}&append_to_response=credits,videos&language=en-US'
+
+    response = requests.get(url_details.format(id, key)).json()
+
+    print("[UTILS] - site : ", response['videos']['results'][0]['site'])
+    print("[UTILS] - trailer_id: ", response['videos']['results'][0]['key'])
+    # trailer_site = response['videos']['results'][0]['site']
+    # trailer_id = response['videos']['results'][0]['key']
+
+    director = []
+
+    for person in response['credits']['crew']:
+        # print("director?", person['job'])
+        if person['job'] == 'Director':
+            # print("directooorr", person['name'])
+            director.append(person['name'])
 
     return {
         'title': response['title'],
@@ -80,9 +84,11 @@ def lookup_movie_detail(id):
         'runtime': response['runtime'],
         'release_date': response['release_date'],
         'genres': response['genres'],
-        'director': "Provisory",
+        'director': director,
         'production_countries': response['production_countries'],
         'tagline': response['tagline'],
+        'trailer_site': response['videos']['results'][0]['site'],
+        'trailer_id': response['videos']['results'][0]['key']
     }
 
 
