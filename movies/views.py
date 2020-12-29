@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 import json
 
 from . import utils
-# from django.contrib.auth.models import User
 from .models import Movie, User
 
 
@@ -31,28 +30,6 @@ def update_star(request):
         return JsonResponse({"error": "Stars not updated."}, status=500)
 
     return JsonResponse({"msg": movie.rate}, status=200)
-
-
-# @login_required
-# def eye_update(request):
-#     if request.method != 'PUT':
-#         return JsonResponse({"error": "Not a PUT request"}, status=405)
-
-#     data = json.loads(request.body)
-#     id = data.get("id")
-#     try:
-#         movie = Movie.objects.get(list_owner=request.user, site_id=id)
-
-#         if movie.watched is False:
-#             movie.watched = True
-#             movie.save()
-#             return JsonResponse({"msg": "watched"}, status=200)
-#     except Exception:
-#         return JsonResponse({"error": "Not able to update eye!"}, status=500)
-
-#     movie.watched = False
-#     movie.save()
-#     return JsonResponse({"msg": "not watched"}, status=200)
 
 
 @login_required
@@ -128,7 +105,6 @@ def add_remove_list(request):
 def movie(request, id):
     # looking up a specific movie details including its trailer
     details = utils.lookup_movie_detail(id)
-    # trailer_id, trailer_site = utils.lookup_trailer(id)
     movie_id = details['id']
 
     try:
@@ -142,17 +118,14 @@ def movie(request, id):
 
     return render(request, "movies/movie.html", {
         "details": details,
-        # "trailer_site": trailer_site,
-        # "trailer_id": trailer_id,
         "list_movie": list_movie
     })
 
 
 def index(request):
     # getting all movies from page 1 from The movie db using this utils
-    print("entered index view")
     movies = utils.lookup_latest_movies(1, request.user)
-    print("returning index view")
+
     return render(request, 'movies/index.html', {
         'movies': movies
     })
@@ -181,11 +154,9 @@ def sign_in(request):
 
     username = request.POST["username"]
     password = request.POST["password"]
-    print("[SIGIN] username", username)
-    print("[SIGIN] password", password)
 
     user = authenticate(request, username=username, password=password)
-    print("[SIGIN] user", user)
+
     if user is None:
         return render(request, "movies/login.html", {
             "msg": "Incorrect username or password. Please, try again!"
@@ -212,8 +183,6 @@ def register(request):
     password = request.POST["password"]
     email = None
     confirmation = request.POST["confirmation"]
-    print("[REGISTER] username", username)
-    print("[REGISTER] password", password)
 
     if password != confirmation or len(password) < 6:
         return render(request, "movies/register.html", {
