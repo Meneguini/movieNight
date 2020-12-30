@@ -17,6 +17,10 @@
             <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="fb-xfbml-parse-ignore facebook-icon"><img src="{% static 'movies/icons/facebook.png' %}" alt="Facebook" width="25" height="25"></a>
         </div>
 
+        <div>
+            <img src="/static/movies/img/spinner.gif" alt="Loading page">
+        </div>
+
         {% if not movies %}
             <div class="empty-list-div">
                 <h3>Your list is empty</h3>

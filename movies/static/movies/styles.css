@@ -489,8 +489,8 @@ body {
 @media screen and (max-width: 1280px) {    
     /* Index */
     .search-container {
-        height: 25vh;
-        padding-top: 7%;
+        height: 27vh;
+        padding-top: 1%;
     }
     
     .search-title {
@@ -583,7 +583,7 @@ body {
 
     /* Index */
     .search-container {
-        padding-top: 4%;
+        padding-top: 1%;
     }
     
     .search-title {
@@ -689,17 +689,22 @@ body {
 
     /* Index */
     .search-container {
-        padding-top: 5%;
+        padding-top: 1%;
         height: 26vh;
     }
     
     .search-title {
-        font-size: 1.3rem;
-        width: 60%;
+        font-size: 1.2rem;
+        width: 80%;
+    }
+
+    .search-input {
+        width: 70%;
+        /* height: 10%; */
     }
     
     .form-comment { 
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         width: 80%;
     }
 
@@ -775,8 +780,8 @@ body {
     }
     
     .search-title {
-        font-size: 1rem;
-        width: 80%;
+        font-size: 0.9rem;
+        width: 90%;
     }
     
     .search-input {
@@ -785,10 +790,9 @@ body {
     }
     
     .form-comment { 
-        font-size: 0.8rem;
+        font-size: 0.6rem;
         width: 80%;
         margin-right: 4%;
-        /* margin-left: 4%; */
     }
 
     /* Movie details */
@@ -839,7 +843,17 @@ body {
     
     /* Index */
     .search-container {
-        padding-top: 6%;
+        height: 29vh;
+        padding-top: 4%;
+    }
+    
+    .search-input {
+        width: 80%;
+    }
+    
+    .form-comment { 
+        font-size: 0.5rem;
+
     }
 }
 
