@@ -80,8 +80,12 @@
                                     <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star.png' %}" alt="Star" style="display: none;">
                                     <img class="{% if user_logged == user_list %}star 5 mylist-hover{% endif %}" src="{% static 'movies/icons/star(1).png' %}" alt="Star">
                                 {% endif %}
+                                <span class="tip-del">Rate</span>
                             </div>
-                            <img class="{% if user_logged == user_list %}list-mylist mylist-hover{% endif %}" src="{% static 'movies/icons/remove.png' %}" alt="List">
+                            <div class="del-tip">
+                                <img class="{% if user_logged == user_list %}list-mylist mylist-hover{% endif %}" src="{% static 'movies/icons/remove.png' %}" alt="List">
+                                <span class="tip-del">Delete movie</span>
+                            </div>
                         </div>
                     </div>
                 </div>

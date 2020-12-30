@@ -214,6 +214,7 @@ body {
 }
 
 .grey-msg {
+    cursor: pointer;
     text-align: center;
     position: absolute;
     top: 0;
@@ -225,12 +226,53 @@ body {
     color: #c9af50;
 }
 
-.green {
-    color: rgb(109, 216, 109);
+.tiptop {
+    position: relative;
+    display: inline-block;
 }
 
 .blank, .green {
+    position: relative;
+    display: inline-block;
     margin-top: 3%;
+}
+
+.green {
+    color: rgb(64, 187, 64);
+}
+
+.tip, .tip-icon {
+    visibility: hidden;
+    width: 120px;
+    bottom: 140%;
+    left: 20%;
+    margin-left: -30px;
+    background-color: #c9af50;
+    color: #fff;
+    text-align: center;
+    padding: 2px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 0;
+}
+
+.tip::after, .tip-icon::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tip */
+    left: 20%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #c9af50 transparent transparent transparent;
+}
+
+.green:hover .tip, .blank:hover .tip {
+    visibility: visible;
+}
+
+.btn-top:hover .tip-icon {
+    visibility: visible;
 }
 
 .card-title {
@@ -366,6 +408,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 3%;
     justify-self: start;
+    position: relative;
 }
 
 .star {
@@ -377,6 +420,46 @@ body {
     width: 18px;
     height: 18px;
     justify-self: end;
+}
+
+.del-tip {
+    justify-self: end; 
+    position: relative;
+    display: inline-block;
+}
+
+.tip-del {
+    visibility: hidden;
+    width: 120px;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+    background-color: #c9af50;
+    color: #fff;
+    text-align: center;
+    padding: 2px 0;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+}
+
+.tip-del::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #c9af50 transparent;
+}
+
+.del-tip:hover .tip-del {
+    visibility: visible;
+}
+
+.star-box:hover .tip-del {
+    visibility: visible;
 }
 
 .mylist-hover:hover {
