@@ -4,7 +4,7 @@ from .models import User, Movie
 
 # Configuring Admin
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'username', 'password')
+    list_display = ('id', 'username', 'email', 'password')
 
 
 class MovieAdmin(admin.ModelAdmin):

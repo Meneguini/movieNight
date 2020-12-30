@@ -7,6 +7,8 @@ import json
 
 from . import utils
 from .models import Movie, User
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 
 
 @login_required
@@ -180,13 +182,25 @@ def register(request):
         return render(request, 'movies/register.html', status=405)
 
     username = request.POST["username"]
+    email = request.POST["email"]
     password = request.POST["password"]
-    email = None
     confirmation = request.POST["confirmation"]
 
     if password != confirmation or len(password) < 6:
         return render(request, "movies/register.html", {
-            "msg": "Password and confirmation do not match or password doesn't have 6 min characters!"
+            "msg": "Password must have 6 min characters and match confirmation!"
+        }, status=401)
+
+    if not username or not email:
+        return render(request, "movies/register.html", {
+            "msg": "You must provide a name and email."
+        }, status=401)
+    # Check if is a valid email
+    try:
+        validate_email(email)
+    except ValidationError:
+        return render(request, "movies/register.html", {
+            "msg": "Not a valid email!"
         }, status=401)
 
     # Trying to create new user
@@ -195,7 +209,7 @@ def register(request):
         user.save()
     except IntegrityError:
         return render(request, "movies/register.html", {
-            "msg": "Please, provide another username!"
+            "msg": "Please, provide a unique username and email!!"
         }, status=401)
 
     login(request, user)

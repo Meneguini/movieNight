@@ -259,7 +259,7 @@ body {
 .tip::after, .tip-icon::after {
     content: " ";
     position: absolute;
-    top: 100%; /* At the bottom of the tip */
+    top: 100%;
     left: 20%;
     margin-left: -5px;
     border-width: 5px;
@@ -290,6 +290,10 @@ body {
 .movie-detail-page {
     position: relative;
     padding-bottom: 15%;
+}
+
+.alert {
+    text-align: center;
 }
 
 .alert-success {
