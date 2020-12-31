@@ -116,13 +116,13 @@ function deleteMovie(event) {
             'X-CSRFToken': csrfToken, 
         },
         body: JSON.stringify({
-            movie_id: event.target.parentElement.children[0].innerHTML
+            movie_id: event.target.id,
         })
     })
     .then(response => response.json())
     .then(msg => {
         // update list
-        updateList(msg, event.target.parentElement.parentElement.parentElement.parentElement);
+        updateList(msg, event.target.parentElement.parentElement.parentElement.parentElement.parentElement);
     })
     .catch(error => console.log(error));
     return false;
