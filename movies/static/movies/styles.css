@@ -373,12 +373,13 @@ body {
     margin-bottom: 3%;
 }
 
-.twitter-icon {
-    margin-right: 2%;
+.share-text {
+    margin-right: 1%;
+    color:  #63adf2;
 }
 
-.facebook-icon {
-    margin-left: 2%;
+.twitter-icon {
+    margin-right: 1%;
 }
 
 .empty-list-div {

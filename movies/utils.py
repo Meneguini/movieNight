@@ -15,7 +15,7 @@ def movie_list(list, user):
         # Getting all details of the movie with this utils function
         details = lookup_movie_detail(movie.site_id)
         id = details['id']
-        # Getting details from our db
+        # Getting stars from our db
         try:
             movie_check = Movie.objects.filter(list_owner=user, site_id=id)
         except Exception:
@@ -26,11 +26,7 @@ def movie_list(list, user):
             "id": details['id'],
             "poster_path": details['poster_path'],
             "title": details['title'],
-            "genres": details['genres'],
-            "release_date": details['release_date'],
             "stars": movie_check[0].rate,
-            "watched": movie_check[0].watched,
-            "eye": "block"
         }
 
         final_list.append(temp_details)
