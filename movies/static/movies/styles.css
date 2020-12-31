@@ -230,7 +230,7 @@ body {
     color: #c9af50;
 }
 
-.tiptop {
+.tip-top {
     position: relative;
     display: inline-block;
 }
@@ -512,13 +512,6 @@ body {
         width: 50%;
     }
 
-    .tip-icon {
-        display: none;
-    }
-
-    .tip {
-        display: none;
-    }
 
     /* Movies detail */
     .media-movie {
@@ -555,6 +548,14 @@ body {
 
     .grey-msg {
         font-size: 0.9rem;
+    }
+
+    .tip-icon {
+        display: none;
+    }
+
+    .tip {
+        display: none;
     }
 
     /* Movie details */

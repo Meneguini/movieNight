@@ -56,22 +56,13 @@ def my_list(request, username):
     except Exception:
         return JsonResponse({"error": "User not found"}, status=400)
 
-    # try:
-    #     my_list = Movie.objects.filter(list_owner=user)
-    #     # Use utils function to get movie details
-    #     movies_details = utils.movie_list(my_list, user)
-    # except Exception:
-    #     return JsonResponse({"error": "List not found."}, status=400)
-
     return render(request, "movies/mylist.html", {
-        # "movies": movies_details,
         "user_logged": request.user.username,
         "user_list": username
     })
 
 
 def list_movies(request, name):
-    print("[LIST_MOVIES] - NAME", name)
     try:
         user = User.objects.get(username=name)
     except Exception:
@@ -84,11 +75,6 @@ def list_movies(request, name):
     except Exception:
         return JsonResponse({"error": "List not found."}, status=400)
 
-    print("[LIST_MOVIES] - movies before dumps - ", movies_details)
-
-    # movies_details = json.dumps(movies_details)
-
-    # print("[LIST_MOVIES] - movies after dumps - ", movies_details)
     return JsonResponse({
         "movies": movies_details,
         "user_logged": request.user.username,

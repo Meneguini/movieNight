@@ -1,27 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // adding event listener for each list icon
-    // document.querySelectorAll('.list-mylist').forEach(movie => {
-    //     movie.addEventListener('click', event => deleteMovie(event))
-    // })
-    // Adding event listener to all stars
-    // document.querySelectorAll('.star').forEach(star => {
-    //     star.addEventListener('click', event => clickedStar(event))
-    // })
-
+    
     getMoviesList();
 });
 
 function getMoviesList() {
     listOwner = document.querySelector('.user-list-name').innerHTML;
-    console.log("listowner - ", listOwner);
       
     fetch(`/list_movies/${listOwner}`)
     .then(response => response.json())
     .then(data => {
-        console.log("movies - before parse", data);
-        // console.log("movies in the list", data);
-        // data = JSON.parse(data);
-        // console.log("movies - after parse", data);
         loadMovies(data);
     })
     .catch(error => console.log(error));
@@ -30,7 +17,6 @@ function getMoviesList() {
 }
 
 function loadMovies(list) {
-    // console.log('list movie', list.movies);
     document.querySelector('.spinner-box').remove();
 
     if (list.movies.length < 1) {
@@ -42,7 +28,6 @@ function loadMovies(list) {
     }
 
     list.movies.forEach(movie => {
-        console.log("movie", movie.poster_path);
 
         aPoster = document.createElement('a');
         aPoster.href = `movie/${movie.id}`;
@@ -240,9 +225,8 @@ function loadMovies(list) {
         divCol.className = 'col mb-4';
 
         divCol.append(divCard);
-        console.log("divCol", divCol);
 
-        document.querySelector('.movies-index').append(divCol);
+        document.querySelector('.add-movies-list').append(divCol);
 
     });
 }
@@ -250,7 +234,6 @@ function loadMovies(list) {
 
 
 function clickedStar(event) {
-    console.log("[CLICKED STAR] - EVENT", event.target);
     // after a star is clicked check wich one was clicked
     let star = event.target.className;
     let num = 0;
