@@ -39,8 +39,8 @@ def movie_list(list, user):
 def lookup_movie_detail(id):
     # Querying The movie db, subqueries included
 
-    url_details = 'https://api.themoviedb.org/3/movie/{}?api_key={}&append_to_response=credits,videos&language=en-US'
-    response = requests.get(url_details.format(id, key)).json()
+    url = 'https://api.themoviedb.org/3/movie/{}?api_key={}&append_to_response=credits,videos&language=en-US'
+    response = requests.get(url.format(id, key)).json()
 
     director = []
 
