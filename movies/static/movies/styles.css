@@ -113,7 +113,11 @@ body {
 }
 
 .form-group {
-    width: 40%;
+    width: 35%;
+}
+
+.submit {
+    width: 100%;
 }
 
 /* -------- Index-page -------- */
