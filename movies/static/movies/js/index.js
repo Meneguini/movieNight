@@ -99,7 +99,7 @@ function fetchNext() {
     .then(data => {
         // Update the counters and Parse the answer
         pageCounter = page;
-        data = JSON.parse(data)
+        // data = JSON.parse(data)
         // Calling loadMovies and passing data(with movies)
         loadMovies(data);
     })

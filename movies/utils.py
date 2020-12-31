@@ -3,6 +3,7 @@ import json
 from .models import Movie
 from django.conf import settings
 
+
 # get api key from settings
 key = settings.MOVIE_KEY
 
@@ -10,10 +11,14 @@ key = settings.MOVIE_KEY
 def movie_list(list, user):
     # Getting the movie list of user logged
     final_list = []
-
+    # seconds = time.time()
     for movie in list:
         # Getting all details of the movie with this utils function
-        details = lookup_movie_detail(movie.site_id)
+
+        # print("[MOVIE_LIST] - url query before", seconds)
+        url = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'
+        details = requests.get(url.format(movie.site_id, key)).json()
+
         id = details['id']
         # Getting stars from our db
         try:
@@ -36,6 +41,7 @@ def movie_list(list, user):
 
 def lookup_movie_detail(id):
     # Querying The movie db, subqueries included
+
     url_details = 'https://api.themoviedb.org/3/movie/{}?api_key={}&append_to_response=credits,videos&language=en-US'
 
     response = requests.get(url_details.format(id, key)).json()
@@ -87,8 +93,12 @@ def lookup_latest_movies(page, user):
         }
         movies.append(movie_data)
 
-    if page > 1:
-        movies = json.dumps(movies)
+    # print("[INDEX INFINITE] BEFORE DUMPS - ", movies)
+
+    # if page > 1:
+    #     movies = json.dumps(movies)
+
+    # print("[INDEX INFINITE] after DUMPS - ", movies)
     return movies
 
 

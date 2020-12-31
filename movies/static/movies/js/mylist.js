@@ -1,15 +1,256 @@
 document.addEventListener('DOMContentLoaded', () => {
     // adding event listener for each list icon
-    document.querySelectorAll('.list-mylist').forEach(movie => {
-        movie.addEventListener('click', event => deleteMovie(event))
-    })
+    // document.querySelectorAll('.list-mylist').forEach(movie => {
+    //     movie.addEventListener('click', event => deleteMovie(event))
+    // })
     // Adding event listener to all stars
-    document.querySelectorAll('.star').forEach(star => {
-        star.addEventListener('click', event => clickedStar(event))
-    })
+    // document.querySelectorAll('.star').forEach(star => {
+    //     star.addEventListener('click', event => clickedStar(event))
+    // })
+
+    getMoviesList();
 });
 
+function getMoviesList() {
+    listOwner = document.querySelector('.user-list-name').innerHTML;
+    console.log("listowner - ", listOwner);
+      
+    fetch(`/list_movies/${listOwner}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log("movies - before parse", data);
+        // console.log("movies in the list", data);
+        // data = JSON.parse(data);
+        // console.log("movies - after parse", data);
+        loadMovies(data);
+    })
+    .catch(error => console.log(error));
+
+    return false;
+}
+
+function loadMovies(list) {
+    // console.log('list movie', list.movies);
+    document.querySelector('.spinner-box').remove();
+
+    if (list.movies.length < 1) {
+        textEmpty = document.createElement('h3');
+        textEmpty.innerHTML = 'Your list is empty!';
+        document.querySelector('.empty-list-div').append(textEmpty);
+        document.querySelector('.empty-list-div').style.display = 'block';
+        return 
+    }
+
+    list.movies.forEach(movie => {
+        console.log("movie", movie.poster_path);
+
+        aPoster = document.createElement('a');
+        aPoster.href = `movie/${movie.id}`;
+
+        if (movie.poster_path) {
+            imgPoster = document.createElement('img');
+            imgPoster.src = `http://image.tmdb.org/t/p/w500//${movie.poster_path}`;
+            imgPoster.alt = 'No Poster';
+            imgPoster.className = 'card-img-top';
+        }
+        else {
+            imgPoster = document.createElement('img');
+            imgPoster.src = `/static/movies/icons/file(1).png`;
+            imgPoster.alt = 'No Poster';
+            imgPoster.className = 'no-img';
+        }
+
+        aPoster.append(imgPoster);
+        
+        divStarBox = document.createElement('div');
+        divStarBox.className = 'star-box';
+
+        // first star
+        imgOneEmpty = document.createElement('img');
+        imgOneEmpty.src = '/static/movies/icons/star.png';
+        imgOneEmpty.alt = 'star';
+
+        imgOneFilled = document.createElement('img');
+        imgOneFilled.src = '/static/movies/icons/star(1).png';
+        imgOneFilled.alt = 'star';
+
+        if (movie.stars == 0) {
+            imgOneFilled.style.display = 'none';  
+        }
+        else if(movie.stars >= 1) {
+            imgOneEmpty.style.display = 'none';
+            imgOneFilled.style.display = 'block';
+        }
+
+        if (list.user_list == list.user_logged) {
+            imgOneEmpty.className = 'star 1 mylist-hover';
+            imgOneEmpty.id = `${movie.id}`;
+            imgOneEmpty.addEventListener('click', event => clickedStar(event));
+            imgOneFilled.className = 'star 1 mylist-hover';
+            imgOneFilled.id = `${movie.id}`;
+            imgOneFilled.addEventListener('click', event => clickedStar(event));
+        }
+
+        // second star
+        imgTwoEmpty = document.createElement('img');
+        imgTwoEmpty.src = '/static/movies/icons/star.png';
+        imgTwoEmpty.alt = 'star';
+
+        imgTwoFilled = document.createElement('img');
+        imgTwoFilled.src = '/static/movies/icons/star(1).png';
+        imgTwoFilled.alt = 'star';
+
+        if (movie.stars < 2) {
+            imgTwoFilled.style.display = 'none';
+        }
+        else if(movie.stars > 1) {
+            imgTwoEmpty.style.display = 'none';
+            imgTwoFilled.style.display = 'block';
+        }
+
+        if (list.user_list == list.user_logged) {
+            imgTwoEmpty.className = 'star 2 mylist-hover';
+            imgTwoEmpty.id = `${movie.id}`;
+            imgTwoEmpty.addEventListener('click', event => clickedStar(event));
+            imgTwoFilled.className = 'star 2 mylist-hover';
+            imgTwoFilled.id = `${movie.id}`;
+            imgTwoFilled.addEventListener('click', event => clickedStar(event));
+        }
+
+        // third star
+        imgThreeEmpty = document.createElement('img');
+        imgThreeEmpty.src = '/static/movies/icons/star.png';
+        imgThreeEmpty.alt = 'star';
+
+        imgThreeFilled = document.createElement('img');
+        imgThreeFilled.src = '/static/movies/icons/star(1).png';
+        imgThreeFilled.alt = 'star';
+
+        if (movie.stars < 3) {
+            imgThreeFilled.style.display = 'none';
+        }
+        else if(movie.stars > 2) {
+            imgThreeEmpty.style.display = 'none';
+            imgThreeFilled.style.display = 'block';
+        }
+
+        if (list.user_list == list.user_logged) {
+            imgThreeEmpty.className = 'star 3 mylist-hover';
+            imgThreeEmpty.id = `${movie.id}`;
+            imgThreeEmpty.addEventListener('click', event => clickedStar(event));
+            imgThreeFilled.className = 'star 3 mylist-hover';
+            imgThreeFilled.id = `${movie.id}`;
+            imgThreeFilled.addEventListener('click', event => clickedStar(event));
+        }
+
+        // Fourth star
+        imgFourEmpty = document.createElement('img');
+        imgFourEmpty.src = '/static/movies/icons/star.png';
+        imgFourEmpty.alt = 'star';
+
+        imgFourFilled = document.createElement('img');
+        imgFourFilled.src = '/static/movies/icons/star(1).png';
+        imgFourFilled.alt = 'star';
+
+        if (movie.stars < 4) {
+            imgFourFilled.style.display = 'none';
+        }
+        else if(movie.stars > 3) {
+            imgFourEmpty.style.display = 'none';
+            imgFourFilled.style.display = 'block';
+        }
+
+        if (list.user_list == list.user_logged) {
+            imgFourEmpty.className = 'star 4 mylist-hover';
+            imgFourEmpty.id = `${movie.id}`;
+            imgFourEmpty.addEventListener('click', event => clickedStar(event));
+            imgFourFilled.className = 'star 4 mylist-hover';
+            imgFourFilled.id = `${movie.id}`;
+            imgFourFilled.addEventListener('click', event => clickedStar(event));
+        }
+
+        // Fifth star
+
+        imgFiveEmpty = document.createElement('img');
+        imgFiveEmpty.src = '/static/movies/icons/star.png';
+        imgFiveEmpty.alt = 'star';
+
+        imgFiveFilled = document.createElement('img');
+        imgFiveFilled.src = '/static/movies/icons/star(1).png';
+        imgFiveFilled.alt = 'star';
+
+        if (movie.stars < 5) {
+            imgFiveFilled.style.display = 'none';
+        }
+        else if(movie.stars == 5) {
+            imgFiveEmpty.style.display = 'none';
+            imgFiveFilled.style.display = 'block';
+        }
+
+        if (list.user_list == list.user_logged) {
+            imgFiveEmpty.className = 'star 5 mylist-hover';
+            imgFiveEmpty.id = `${movie.id}`;
+            imgFiveEmpty.addEventListener('click', event => clickedStar(event));
+            imgFiveFilled.className = 'star 5 mylist-hover';
+            imgFiveFilled.id = `${movie.id}`;
+            imgFiveFilled.addEventListener('click', event => clickedStar(event));
+        }
+
+        spanTip = document.createElement('span');
+        spanTip.innerHTML = 'Rate';
+        spanTip.className = 'tip-del';
+
+        divStarBox.append(imgOneEmpty, imgOneFilled, imgTwoEmpty, imgTwoFilled, imgThreeEmpty, imgThreeFilled, imgFourEmpty, imgFourFilled, imgFiveEmpty, imgFiveFilled, spanTip);
+
+        divDelTip = document.createElement('div');
+        divDelTip.className = 'del-tip';
+
+        imgDel = document.createElement('img');
+        imgDel.alt = 'Delete movie from list';
+        imgDel.src = '/static/movies/icons/remove.png';
+
+        if (list.user_list == list.user_logged) {
+            imgDel.className = 'list-mylist mylist-hover';
+        }
+
+        imgDel.id = `${movie.id}`;
+        imgDel.addEventListener('click', event => deleteMovie(event))
+        spantip2 = document.createElement('span');
+        spantip2.innerHTML = 'Delete movie';
+        spantip2.className = 'tip-del';
+
+        divDelTip.append(imgDel, spantip2);
+
+        divStarDel = document.createElement('div');
+        divStarDel.className = 'stars-del';
+
+        divStarDel.append( divStarBox, divDelTip);
+
+        divCardBody = document.createElement('div');
+        divCardBody.className = 'card-body-mylist';
+
+        divCardBody.append(divStarDel);
+
+        divCard = document.createElement('div');
+        divCard.className = 'card card-mylist h-100';
+
+        divCard.append(aPoster, divCardBody);
+
+        divCol = document.createElement('div');
+        divCol.className = 'col mb-4';
+
+        divCol.append(divCard);
+        console.log("divCol", divCol);
+
+        document.querySelector('.movies-index').append(divCol);
+
+    });
+}
+
+
+
 function clickedStar(event) {
+    console.log("[CLICKED STAR] - EVENT", event.target);
     // after a star is clicked check wich one was clicked
     let star = event.target.className;
     let num = 0;
@@ -33,7 +274,8 @@ function clickedStar(event) {
 
 function fetchStar(num, event) {
     // fetch data from backend
-    let id = event.target.parentElement.parentElement.children[0].innerHTML;
+    // let id = event.target.parentElement.parentElement.children[0].innerHTML;
+    let id = event.target.id;
     const csrfToken = getCookie('csrftoken');
     fetch('/update_star', {
         method: "PUT",

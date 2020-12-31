@@ -386,6 +386,11 @@ body {
     margin-right: 1%;
 }
 
+.spinner-box {
+    text-align: center;
+    margin-top: 8%;
+}
+
 .empty-list-div {
     text-align: center;
     margin-top: 10%;

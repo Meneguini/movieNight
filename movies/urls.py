@@ -17,6 +17,6 @@ urlpatterns = [
     path('my_list/movie/add_remove_list', views.add_remove_list, name="add_remove_list"),
     path('add_remove_list', views.add_remove_list, name="add_remove_list"),
     path('delete_movie', views.delete_movie, name="delete_movie"),
-    path('update_star', views.update_star, name="update_star")
-
+    path('update_star', views.update_star, name="update_star"),
+    path('list_movies/<str:name>', views.list_movies, name="list_movies")
 ]
