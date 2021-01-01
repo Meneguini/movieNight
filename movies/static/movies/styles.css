@@ -208,15 +208,6 @@ body {
     position: relative;
 }
 
-/* .no-img {
-    margin: 5%;
-    margin-bottom: 15%;
-    margin-top: 15%;
-    width: 80%;
-    height: 80%;
-    position: relative;
-} */
-
 .no-poster {
     position: absolute;
     width: 90%;
@@ -387,11 +378,7 @@ body {
 
 .no-poster-movies {
     position: absolute;
-    /* top: 50%; */
-    /* bottom: 0; */
-    /* top: 0; */
     text-align: center;
-    /* margin-right: 5%; */
     margin-left: 5%;
 }
 

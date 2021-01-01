@@ -28,7 +28,6 @@ function loadMovies(list) {
     }
 
     list.movies.forEach(movie => {
-        console.log("movie_poster", movie.poster_path);
         aPoster = document.createElement('a');
         aPoster.href = `movie/${movie.id}`;
 

@@ -42,9 +42,6 @@ def lookup_movie_detail(id):
     url = 'https://api.themoviedb.org/3/movie/{}?api_key={}&append_to_response=credits,videos&language=en-US'
     response = requests.get(url.format(id, key)).json()
 
-    print("[UTILS] - lookup_movie_deyails ", response)
-    print("[UTILS] - poster path", response['poster_path'])
-
     try:
         trailer_site = response['videos']['results'][0]['site']
         trailer_id = response['videos']['results'][0]['key']

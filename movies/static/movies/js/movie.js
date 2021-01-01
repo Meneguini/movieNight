@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let iframe = document.querySelector('.iframe');
 
     iframe.onload = () => {
-    console.log("iframe loaded");
     }
     // checking if there is a blank list icon and adding event listener
     if (document.querySelector('.list-blank')) {

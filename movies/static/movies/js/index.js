@@ -127,7 +127,6 @@ function loadMovies(data) {
             img.src = `http://image.tmdb.org/t/p/w500//${movieBox.poster_path}`;
             divA.append(img);
         } else {
-            console.log("img not loaded in creation");
             img.src = '/static/movies/img/film.jpg';
             noPoster = document.createElement('p');
             noPoster.innerHTML = 'No poster available for this title.';
