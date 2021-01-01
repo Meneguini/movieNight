@@ -40,7 +40,7 @@
             <div class="card h-100">
               {% if movie.poster_path == None %}
               <a href="movie/{{ movie.id }}">
-                <img src='/static/movies/img/film.jpg' class="card-img-top" alt="No Poster">
+                <img src="{% static 'movies/img/film.jpg'%}" class="card-img-top" alt="No Poster">
                 <p class="no-poster">No poster available for this title.</p>
               </a>
               {% else %}
