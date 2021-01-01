@@ -122,16 +122,20 @@ function loadMovies(data) {
         divA.href = `movie/${movieBox.id}`;
 
         img = document.createElement('img');
+        img.className = "card-img-top";
         if(movieBox.poster_path != null){ 
             img.src = `http://image.tmdb.org/t/p/w500//${movieBox.poster_path}`;
-            img.className = "card-img-top";
+            divA.append(img);
         } else {
             console.log("img not loaded in creation");
-            img.src = '/static/movies/icons/file(1).png';
-            img.className = "no-img";
+            img.src = '/static/movies/img/film.jpg';
+            noPoster = document.createElement('p');
+            noPoster.innerHTML = 'No poster available for this title.';
+            noPoster.className = 'no-poster';
+            divA.append(img, noPoster);
         }
 
-        divA.append(img);
+
 
         img.alt = "No poster";
 
