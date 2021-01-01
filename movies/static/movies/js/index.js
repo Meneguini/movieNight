@@ -124,7 +124,7 @@ function loadMovies(data) {
         img = document.createElement('img');
         img.className = "card-img-top";
         if(movieBox.poster_path != null){ 
-            img.src = `http://image.tmdb.org/t/p/w500//${movieBox.poster_path}`;
+            img.src = `https://image.tmdb.org/t/p/w500//${movieBox.poster_path}`;
             divA.append(img);
         } else {
             img.src = '/static/movies/img/film.jpg';

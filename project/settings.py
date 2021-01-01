@@ -88,7 +88,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': env('DATABASE_ENGINE'),
-        'NAME': BASE_DIR / env('DATABASE_NAME'),
+        'NAME': env('DATABASE_NAME'),
+        'HOST': env('DATABASE_HOST'),
+        'PORT': env('DATABASE_PORT'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASSWORD')
     }
 }
 

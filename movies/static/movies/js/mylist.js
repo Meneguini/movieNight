@@ -34,7 +34,7 @@ function loadMovies(list) {
         imgPoster = document.createElement('img');
         imgPoster.className = 'card-img-top';
         if (movie.poster_path) {
-            imgPoster.src = `http://image.tmdb.org/t/p/w500//${movie.poster_path}`;
+            imgPoster.src = `https://image.tmdb.org/t/p/w500//${movie.poster_path}`;
             imgPoster.alt = 'Poster';
             aPoster.append(imgPoster);
         }
