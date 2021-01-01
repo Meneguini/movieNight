@@ -58,10 +58,12 @@ function loadMovies(list) {
         imgOneEmpty = document.createElement('img');
         imgOneEmpty.src = '/static/movies/icons/star.png';
         imgOneEmpty.alt = 'star';
+        imgOneEmpty.className = 'star';
 
         imgOneFilled = document.createElement('img');
         imgOneFilled.src = '/static/movies/icons/star(1).png';
         imgOneFilled.alt = 'star';
+        imgOneFilled.className = 'star';
 
         if (movie.stars == 0) {
             imgOneFilled.style.display = 'none';  
@@ -84,10 +86,12 @@ function loadMovies(list) {
         imgTwoEmpty = document.createElement('img');
         imgTwoEmpty.src = '/static/movies/icons/star.png';
         imgTwoEmpty.alt = 'star';
+        imgTwoEmpty.className = 'star';
 
         imgTwoFilled = document.createElement('img');
         imgTwoFilled.src = '/static/movies/icons/star(1).png';
         imgTwoFilled.alt = 'star';
+        imgTwoFilled.className = 'star';
 
         if (movie.stars < 2) {
             imgTwoFilled.style.display = 'none';
@@ -110,10 +114,12 @@ function loadMovies(list) {
         imgThreeEmpty = document.createElement('img');
         imgThreeEmpty.src = '/static/movies/icons/star.png';
         imgThreeEmpty.alt = 'star';
+        imgThreeEmpty.className = 'star';
 
         imgThreeFilled = document.createElement('img');
         imgThreeFilled.src = '/static/movies/icons/star(1).png';
         imgThreeFilled.alt = 'star';
+        imgThreeFilled.className = 'star';
 
         if (movie.stars < 3) {
             imgThreeFilled.style.display = 'none';
@@ -136,10 +142,12 @@ function loadMovies(list) {
         imgFourEmpty = document.createElement('img');
         imgFourEmpty.src = '/static/movies/icons/star.png';
         imgFourEmpty.alt = 'star';
+        imgFourEmpty.className = 'star';
 
         imgFourFilled = document.createElement('img');
         imgFourFilled.src = '/static/movies/icons/star(1).png';
         imgFourFilled.alt = 'star';
+        imgFourFilled.className = 'star';
 
         if (movie.stars < 4) {
             imgFourFilled.style.display = 'none';
@@ -163,10 +171,12 @@ function loadMovies(list) {
         imgFiveEmpty = document.createElement('img');
         imgFiveEmpty.src = '/static/movies/icons/star.png';
         imgFiveEmpty.alt = 'star';
+        imgFiveEmpty.className = 'star';
 
         imgFiveFilled = document.createElement('img');
         imgFiveFilled.src = '/static/movies/icons/star(1).png';
         imgFiveFilled.alt = 'star';
+        imgFiveFilled.className = 'star';
 
         if (movie.stars < 5) {
             imgFiveFilled.style.display = 'none';
@@ -185,11 +195,18 @@ function loadMovies(list) {
             imgFiveFilled.addEventListener('click', event => clickedStar(event));
         }
 
-        spanTip = document.createElement('span');
-        spanTip.innerHTML = 'Rate';
-        spanTip.className = 'tip-del';
+        if (list.user_list == list.user_logged) {
+            spanTip = document.createElement('span');
+            spanTip.innerHTML = 'Rate';
+            spanTip.className = 'tip-del';
+            divStarBox.append(imgOneEmpty, imgOneFilled, imgTwoEmpty, imgTwoFilled, imgThreeEmpty, imgThreeFilled, imgFourEmpty, imgFourFilled, imgFiveEmpty, imgFiveFilled, spanTip);
+        }
+        else {
+            divStarBox.append(imgOneEmpty, imgOneFilled, imgTwoEmpty, imgTwoFilled, imgThreeEmpty, imgThreeFilled, imgFourEmpty, imgFourFilled, imgFiveEmpty, imgFiveFilled);
+        }
 
-        divStarBox.append(imgOneEmpty, imgOneFilled, imgTwoEmpty, imgTwoFilled, imgThreeEmpty, imgThreeFilled, imgFourEmpty, imgFourFilled, imgFiveEmpty, imgFiveFilled, spanTip);
+
+
 
         divDelTip = document.createElement('div');
         divDelTip.className = 'del-tip';
@@ -197,18 +214,17 @@ function loadMovies(list) {
         imgDel = document.createElement('img');
         imgDel.alt = 'Delete movie from list';
         imgDel.src = '/static/movies/icons/remove.png';
+        imgDel.className = 'list-mylist';
+        imgDel.id = `${movie.id}`;
+        imgDel.addEventListener('click', event => deleteMovie(event))
 
         if (list.user_list == list.user_logged) {
             imgDel.className = 'list-mylist mylist-hover';
+            spantip2 = document.createElement('span');
+            spantip2.innerHTML = 'Delete movie';
+            spantip2.className = 'tip-del';
+            divDelTip.append(imgDel, spantip2);
         }
-
-        imgDel.id = `${movie.id}`;
-        imgDel.addEventListener('click', event => deleteMovie(event))
-        spantip2 = document.createElement('span');
-        spantip2.innerHTML = 'Delete movie';
-        spantip2.className = 'tip-del';
-
-        divDelTip.append(imgDel, spantip2);
 
         divStarDel = document.createElement('div');
         divStarDel.className = 'stars-del';
