@@ -404,6 +404,7 @@ body {
 }
 
 .card-body-mylist {
+    height: 100%;
     padding: 5%;
     background-color: #0f77e6;
     border-bottom-left-radius: 3px;
