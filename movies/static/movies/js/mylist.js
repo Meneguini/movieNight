@@ -32,20 +32,25 @@ function loadMovies(list) {
         aPoster = document.createElement('a');
         aPoster.href = `movie/${movie.id}`;
 
+        imgPoster = document.createElement('img');
+        imgPoster.className = 'card-img-top';
         if (movie.poster_path) {
-            imgPoster = document.createElement('img');
             imgPoster.src = `http://image.tmdb.org/t/p/w500//${movie.poster_path}`;
-            imgPoster.alt = 'No Poster';
-            imgPoster.className = 'card-img-top';
+            imgPoster.alt = 'Poster';
+            aPoster.append(imgPoster);
         }
         else {
             imgPoster = document.createElement('img');
-            imgPoster.src = `/static/movies/icons/file(1).png`;
+            imgPoster.src = `/static/movies/img/film.jpg`;
             imgPoster.alt = 'No Poster';
-            imgPoster.className = 'no-img';
+            imgPoster.className = 'card-img-top';
+            noPoster = document.createElement('p');
+            noPoster.innerHTML = 'No poster available for this title.';
+            noPoster.className = 'no-poster';
+            aPoster.append(imgPoster, noPoster);
         }
 
-        aPoster.append(imgPoster);
+
         
         divStarBox = document.createElement('div');
         divStarBox.className = 'star-box';
