@@ -37,7 +37,7 @@ MOVIE_KEY = env('MOVIEDB_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG_MODE')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://git.heroku.com/my-movie-night.git', '127.0.0.1']
 
 # Application definition
 
