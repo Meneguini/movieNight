@@ -35,8 +35,8 @@
         <div class="media media-movie">
             {% if details.poster_path == None %}
             
-              <img src="{% static 'movies/img/film.jpg' %}" class="align-self-start mr-3 poster-movie-details film-movies" alt="No Poster">
-              <span class="no-poster-movies">No poster available for this title.</span>
+              <img src="{% static 'movies/img/film-2.jpg' %}" class="align-self-start mr-3 poster-movie-details film-movies" alt="No Poster">
+              <!-- <span class="no-poster-movies">No poster available for this title.</span> -->
             {% else %}
               <img src='https://image.tmdb.org/t/p/w500//{{ details.poster_path }}' class="align-self-start mr-3 poster-movie-details" alt="No Poster">
             {% endif %}

@@ -375,11 +375,11 @@ body {
     text-align: center;
 }
 
-.no-poster-movies {
+/* .no-poster-movies {
     position: absolute;
     text-align: center;
     margin-left: 5%;
-}
+} */
 
 /* -------- Mylist page -------- */
 .mylist-page {
@@ -541,9 +541,9 @@ body {
         padding-right: 4%;
     }
     
-    .no-poster-movies {
+    /* .no-poster-movies {
         margin-left: 5%;
-    }
+    } */
 
     /* Mylist */
     .star, .list-mylist {
@@ -589,10 +589,10 @@ body {
         font-size: 1.2rem;
     }
     
-    .no-poster-movies {
+    /* .no-poster-movies {
         font-size: 0.9rem;
         margin-left: 1%;
-    }
+    } */
 
     /* Mylist */
     .star, .list-mylist {
@@ -664,8 +664,7 @@ body {
 
     .media-movie {
         display: grid;
-        grid-template-rows: 45% auto;
-        
+        grid-template-rows: 30% auto;
     }
 
     .poster-movie-details {
@@ -673,10 +672,10 @@ body {
         margin-left: 30%;
     }
 
-    .no-poster-movies {
+    /* .no-poster-movies {
         font-size: 0.9rem;
         margin-left: 30%;
-    }
+    } */
 
     .media-body {
         margin-top: 4%;
@@ -775,17 +774,17 @@ body {
     }
 
     .media-movie {
-        grid-template-rows: 30% auto;
+        grid-template-rows: 25% auto;
     }
 
     .title-poster {
         margin-top: 8%;
     }
 
-    .no-poster-movies {
+    /* .no-poster-movies {
         font-size: 0.7rem;
         margin-left: 29%;
-    }
+    } */
 
     form {
         margin-bottom: 2%;
@@ -866,13 +865,13 @@ body {
     }
 
     .media-movie {
-        grid-template-rows: 28% auto;
+        grid-template-rows: 18% auto;
     }
 
-    .no-poster-movies {
+    /* .no-poster-movies {
         font-size: 0.5rem;
         margin-left: 30%;
-    }
+    } */
 
     .media-body {
         font-size: 1rem;
@@ -914,9 +913,13 @@ body {
 
     }
     /* Movies */
-    .no-poster-movies {
+    /* .no-poster-movies {
         font-size: 0.5rem;
         margin-left: 29%;
+    } */
+
+    .media-movie {
+        grid-template-rows: 15% auto;
     }
 }
 
@@ -925,8 +928,8 @@ body {
     .title-poster {
         margin-top: 3%;
     }
-    .no-poster-movies {
+    /* .no-poster-movies {
         font-size: 0.4rem;
         margin-left: 30%;
-    }
+    } */
 }
