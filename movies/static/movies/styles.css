@@ -371,7 +371,7 @@ body {
 }
 
 .film-movies {
-    position: relative;
+    /* position: relative; */
     text-align: center;
 }
 
@@ -664,7 +664,7 @@ body {
 
     .media-movie {
         display: grid;
-        grid-template-rows: 30% auto;
+        grid-template-rows: 31% auto;
     }
 
     .poster-movie-details {
@@ -774,7 +774,7 @@ body {
     }
 
     .media-movie {
-        grid-template-rows: 25% auto;
+        grid-template-rows: 23% auto;
     }
 
     .title-poster {
@@ -865,7 +865,8 @@ body {
     }
 
     .media-movie {
-        grid-template-rows: 18% auto;
+        grid-template-rows: 20% auto;
+        /* grid-gap: 2%; */
     }
 
     /* .no-poster-movies {
@@ -919,7 +920,7 @@ body {
     } */
 
     .media-movie {
-        grid-template-rows: 15% auto;
+        grid-template-rows: 19% auto;
     }
 }
 
