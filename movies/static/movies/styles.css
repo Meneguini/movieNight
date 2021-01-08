@@ -124,6 +124,7 @@ body {
     width: 20px;
     height: 20px;
     margin-left: 1%;
+    margin-top: -1%;
 }
 
 /* -------- Signin / Register -------- */
@@ -765,7 +766,6 @@ body {
 
     .search-input {
         width: 70%;
-        /* height: 10%; */
     }
     
     .form-comment { 
