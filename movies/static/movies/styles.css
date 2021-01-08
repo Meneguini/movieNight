@@ -127,6 +127,10 @@ body {
     margin-top: -1%;
 }
 
+.footer-column-title {
+    color: rgb(155, 152, 152);
+}
+
 /* -------- Signin / Register -------- */
 .signin-page, .register-page {
     position: relative;
