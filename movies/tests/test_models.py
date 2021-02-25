@@ -13,5 +13,16 @@ class MovieTestCase(TestCase):
         )
 
         # Create Movies
-        Movie.objects.create(list_owner=user_1, name="Testing Movie 1", site_id=1234)
-        Movie.objects.create(list_owner=user_2, name="Testing Movie 2", site_id=4321)
+        Movie.objects.create(list_owner=user_1, name="Movie 1", site_id=1234)
+        Movie.objects.create(list_owner=user_2, name="Movie 2", site_id=4321)
+        Movie.objects.create(
+            list_owner=user_1,
+            name="Movie 3 akakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakaka",
+            site_id=2222,
+        )
+        Movie.objects.create(
+            list_owner=user_2, name="Testing watch field", site_id=5555, watched=True
+        )
+        Movie.objects.create(list_owner=user_1, name="Movie 4", site_id=777, rate=2)
+        Movie.objects.create(list_owner=user_1, name="Movie 4", site_id=777, rate=-1)
+        Movie.objects.create(list_owner=user_1, name="Movie 4", site_id=777, rate=0)
