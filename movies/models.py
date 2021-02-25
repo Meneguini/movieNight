@@ -22,8 +22,7 @@ class Movie(models.Model):
     rate = models.PositiveIntegerField(blank=True)
 
     def __str__(self):
-        return f"List owner: {self.list_owner} | movie: {self.name} | id 
-        from site: {self.site_id} | watched: {self.watched} | rate: {self.rate}."
+        return f"List owner: {self.list_owner} | movie: {self.name} | id from site: {self.site_id} | watched: {self.watched} | rate: {self.rate}."
 
     def is_movie_valid(self):
         return self.name < 201 and self.watched is False
