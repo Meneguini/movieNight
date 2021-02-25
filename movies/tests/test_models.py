@@ -17,7 +17,7 @@ class MovieTestCase(TestCase):
         Movie.objects.create(list_owner=user_2, name="Movie 2", site_id=4321)
         Movie.objects.create(
             list_owner=user_1,
-            name="Movie 3 akakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakaka",
+            name=f"Movie 3 {"foo" * 70}",
             site_id=2222,
         )
         Movie.objects.create(
