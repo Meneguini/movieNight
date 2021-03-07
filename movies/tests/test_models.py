@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import User, Movie
+from ..models import User, Movie
 
 
 class MovieTestCase(TestCase):
@@ -17,7 +17,7 @@ class MovieTestCase(TestCase):
         Movie.objects.create(list_owner=user_2, name="Movie 2", site_id=4321)
         Movie.objects.create(
             list_owner=user_1,
-            name=f"Movie 3 {"foo" * 70}",
+            name=f"Movie 3 {'foo' * 70}",
             site_id=2222,
         )
         Movie.objects.create(
@@ -26,3 +26,9 @@ class MovieTestCase(TestCase):
         Movie.objects.create(list_owner=user_1, name="Movie 4", site_id=777, rate=2)
         Movie.objects.create(list_owner=user_1, name="Movie 4", site_id=777, rate=-1)
         Movie.objects.create(list_owner=user_1, name="Movie 4", site_id=777, rate=0)
+        Movie.objects.create(list_owner=user_1, name="Movie 4", site_id=777, rate=None)
+
+    def test_valid_movie(self):
+        user_case = User.objects.get(username="USER-1")
+        movie_a = Movie.objects.get(list_owner=user_case, name="Movie 1", site_id=1234)
+        self.assertTrue(movie_a.is_movie_valid())
