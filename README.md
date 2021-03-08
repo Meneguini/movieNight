@@ -2,7 +2,7 @@
 
 ## What is Movie Night?
 
-Movie Night is a project created to work with Django, postgreSQL and JavaScript.
+Movie Night is web application created to work with Django, postgreSQL and JavaScript.
 
 ## Technologies
 
@@ -10,4 +10,7 @@ Movie Night is a project created to work with Django, postgreSQL and JavaScript.
 - PostgreSQL
 - JavaScript
 - Infinite Scroll
-- Movie db API
+- The Movie Database API
+- Youtube embedded link
+
+Icons from <a href="https://www.flaticon.com/">flaticon.com</a>
