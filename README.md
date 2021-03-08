@@ -1,4 +1,4 @@
-# Telescope <img align="left" width="150" height="150" src="/home/teching/linuxFiles/portfolio/movieEnv/movie/movies/static/movies/icons/popcorn.png">
+# Telescope <img align="left" width="150" height="150" src="movies/static/movies/icons/popcorn.png">
 
 ## What is Movie Night?
 
