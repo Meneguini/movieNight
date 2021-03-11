@@ -1,4 +1,4 @@
-# Telescope <img align="left" width="150" height="150" src="movies/static/movies/icons/popcorn.png">
+# Movie Night <img align="left" width="150" height="150" src="movies/static/movies/icons/popcorn.png">
 
 ## What is Movie Night?
 
@@ -12,5 +12,6 @@ Movie Night is web application created to work with Django, postgreSQL and JavaS
 - Infinite Scroll
 - The Movie Database API
 - Youtube embedded link
+- User authentication
 
 Icons from <a href="https://www.flaticon.com/">flaticon.com</a>
