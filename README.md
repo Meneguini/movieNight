@@ -2,7 +2,7 @@
 
 ## What is Movie Night?
 
-Movie Night is web application created to work with Django, postgreSQL and JavaScript.
+Movie Night is web application created using Django, postgreSQL, HTML, CSS and JavaScript.
 
 ## Technologies
 
