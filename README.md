@@ -3,10 +3,7 @@
 ## What is Movie Night?
 
 Movie Night is web application created using Django, postgreSQL, HTML, CSS and JavaScript.
-<<<<<<< HEAD
 You can access the web app at https://my-movie-night.herokuapp.com/
-=======
->>>>>>> f6771d41fce8b10f6fb1bc5f200806a16140a770
 
 ## Technologies
 
