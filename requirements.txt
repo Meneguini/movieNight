@@ -1,7 +1,8 @@
+APScheduler==3.7.0
 asgiref==3.2.10
 certifi==2020.6.20
 chardet==3.0.4
-Django==3.1
+Django==3.1.7
 django-environ==0.4.5
 gunicorn==20.0.4
 idna==2.10
@@ -13,6 +14,7 @@ pytz==2020.1
 requests==2.24.0
 six==1.15.0
 sqlparse==0.3.1
+tzlocal==2.1
 urllib3==1.25.10
 webencodings==0.5.1
 Werkzeug==1.0.1
