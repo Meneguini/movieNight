@@ -3,3 +3,4 @@ movies/migrations
 db.sqlite3
 notes.txt
 mydatabase
+venv
